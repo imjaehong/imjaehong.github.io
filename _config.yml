@@ -5,11 +5,11 @@ profile_img: "/assets/img/profile.webp"
 
 # Social Links
 email: hhhong0201@gmail.com
-github_username: github
-twitter_username: twitter
-instagram_username: instagram
-linkedin_username: linkedin
-facebook_username: facebook
+github_username: imjaehong
+#twitter_username: twitter
+#instagram_username: instagram
+#linkedin_username: linkedin
+#facebook_username: facebook
 
 # External API
 giscus_repo: "byanko55/jekyll-theme-satellite"
