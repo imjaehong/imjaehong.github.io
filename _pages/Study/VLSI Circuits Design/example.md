@@ -15,7 +15,7 @@ bookmark: true
 ![image](/assets/img/vlsi_image/image05.png)
 ![image](/assets/img/vlsi_image/image06.png)
 ![image](/assets/img/vlsi_image/image07.png)
-이미지 자리2
+이미지 자리33
 
 # Why do we use it?
 ---
