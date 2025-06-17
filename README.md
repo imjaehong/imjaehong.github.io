@@ -13,7 +13,7 @@
 # Satellite🛰️ - Jekyll blog theme
 An emotional and adorable blog theme powered by ***Jekyll***. 
 
-Live demo is available [here](https://imjaehong.github.io)
+Live demo is available [here](https://byanko55.github.io)
 
 ![Demo Page](https://i.ibb.co/h1QF06V/demo.webp)
 
