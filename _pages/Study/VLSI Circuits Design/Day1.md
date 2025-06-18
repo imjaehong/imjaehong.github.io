@@ -47,9 +47,6 @@ Numbers:
 <!-- Link -->
 Click [here](http://academy.dream-coding.com/)
 
-<!-- Image -->
-![image description](https://user-images.githubusercontent.com/61736137/102153953-b2881000-3ebb-11eb-9581-7026bc8e169e.jpg)
-
 <!-- Table -->
 | Header | Description |
 | :--: | :--: |
@@ -66,6 +63,7 @@ console.log('your message')
 ```
 
 # 1일차 기록
+---
 ![](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 150927.png>)
 ![](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 150854.png>)
 Custom Compiler 실행 및 초기화면
