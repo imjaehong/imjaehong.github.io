@@ -80,6 +80,7 @@ schematic 생성을 위해 CellView 추가 (schematic name: NOT)
 ![image](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 151602.png>) 
 schematic 원할한 작업을 위해 Design Options setting (Editing modify)
 
+![image](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 151838.png>)
 
 | Key | Roll |
 | :--: | :--: |
@@ -94,6 +95,7 @@ schematic 원할한 작업을 위해 Design Options setting (Editing modify)
 | M | move |
 | E | inside cell |
 | ctrl + E | outside cell |
+
 단축키 및 역할 기록
 
 ![image](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 153937.png>) 
