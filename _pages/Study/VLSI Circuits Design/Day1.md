@@ -80,7 +80,7 @@ schematic 생성을 위해 CellView 추가 (schematic name: NOT)
 ![image](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 151602.png>) 
 schematic 원할한 작업을 위해 Design Options setting (Editing modify)
 
-![image](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 151838.png>)
+
 
 | Key | Roll |
 | :--: | :--: |
