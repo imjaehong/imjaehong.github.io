@@ -64,7 +64,12 @@ console.log('your message')
 
 # 1일차 기록
 ---
-![image](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 150927.png>)
+
+```ts
+source /home/env/env_tools.csh
+custom_compiler&
+```
+
 ![image](<../../../assets/img/vlsi_image/2025-06-16/스크린샷 2025-06-16 150854.png>) 
 Custom Compiler 실행 및 초기화면
 
