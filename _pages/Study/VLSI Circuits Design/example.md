@@ -30,3 +30,58 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 # Where can I get some?
 ---
 There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+
+<!-- Heading -->
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
+<!--Line-->
+---
+
+<!-- Text attributes -->
+This is the **bold** text and this is the *italic* text and let's do ~~strikethrough~~.
+
+<!-- Quote -->
+> Don't forget to code your dream.
+
+<!-- Bullet list -->
+Fruits:
+* 🍎
+* 🍋
+
+Other fruits:
+- 🍑
+- 🍏
+
+<!-- Numbered list -->
+Numbers:
+1. first  
+2. second  
+3. third
+
+<!-- Link -->
+Click [here](http://academy.dream-coding.com/)
+
+<!-- Image -->
+![image description](https://user-images.githubusercontent.com/61736137/102153953-b2881000-3ebb-11eb-9581-7026bc8e169e.jpg)
+
+<!-- Table -->
+| Header | Description |
+| :--: | :--: |
+| Cell1 | Cell2 |
+| Cell1 | Cell2 |
+| Cell1 | Cell2 |
+| Cell1 | Cell2 |
+
+<!-- Code -->
+To print message in the console, use `console.log('your message')` and ..
+
+```ts
+console.log('your message')
+```
+
+하윙
