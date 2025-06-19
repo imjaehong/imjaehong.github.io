@@ -1,5 +1,5 @@
 ---
-title: "ex1"
+title: "2025-06-16 study"
 tags:
     - book
     - education
