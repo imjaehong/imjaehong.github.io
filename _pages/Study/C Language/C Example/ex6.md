@@ -1,0 +1,64 @@
+---
+title: "[ex6] 정수 3개 합과 평균 구하기"
+tags:
+    - Study
+    - Language
+date: "2025-03-18"
+thumbnail: "/assets/img/thumbnail/C.png"
+bookmark: true
+---
+# 문제 설명
+---
+공백으로 분리된 정수 3개를 입력 받아 합과 평균을 인쇄하라
+
+```c
+#include<stdio.h>
+
+void main(void)
+{
+	int a, b, c, sum;
+	float avg;
+
+	// 코드 작성
+
+	printf("%d, %f\n", sum, avg);
+}
+```
+
+# 입력 예시
+---
+
+```
+10 20 30
+```
+
+# 출력 예시
+---
+
+```
+60, 20.000000
+```
+
+# 정답 코드
+---
+
+```c
+#include<stdio.h>
+ 
+void main(void)
+{
+    int a, b, c, sum;
+    float avg;
+ 
+    // 코드 작성
+    scanf("%d %d %d", &a, &b, &c);
+    sum = a + b + c;
+    avg = sum / 3.0f;
+ 
+    printf("%d, %f\n", sum, avg);
+}
+```
+
+# 메모
+---
+> printf 내부의 **\n** 습관화 필요

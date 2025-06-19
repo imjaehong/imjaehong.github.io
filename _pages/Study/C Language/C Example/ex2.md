@@ -53,31 +53,6 @@ A, KOR
 
 ```c
 #include <stdio.h>
-
-void main(void)
-{
-	char name[31];
-	int age;
-	float height;
-	char blood_type;
-	char nationality[11];
-
-	// 코드 작성
-    gets(name); //공백 포함 문자열
-    scanf("%d", &age);
-    scanf("%f", &height);
-    scanf(" %c", &blood_type);
-    scanf("%s", &nationality, 11); //scanf("%s", nationality);
-    //scanf("%d %f %c %s", &age, &height, &blood_type, nationality);
-
-    printf("%s, %d, %f\n", name, age, height);
-    printf("%c, %s", blood_type, nationality);
-
-}
-```
-
-```c
-#include <stdio.h>
  
 void main(void)
 {
