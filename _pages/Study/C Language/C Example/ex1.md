@@ -43,4 +43,4 @@ void main(void)
 
 # 메모
 ---
-printf 내부의 **\n** 습관화 필요
+> printf 내부의 **\n** 습관화 필요
