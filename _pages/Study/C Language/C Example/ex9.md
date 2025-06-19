@@ -1,0 +1,60 @@
+---
+title: "[ex9] 함수의 선언"
+tags:
+    - Study
+    - Language
+date: "2025-03-18"
+thumbnail: "/assets/img/thumbnail/C.png"
+bookmark: true
+---
+# 문제 설명
+---
+프로그램을 오류가 발생하지 않도록 함수를 선언하라
+
+```c
+#include <stdio.h>
+
+// 여기에 함수 선언
+
+
+void main(void)
+{
+	weight(50);
+}
+
+void weight(int w)
+{
+	printf("Weight = %d Kg\n", w);
+}
+```
+
+# 출력 예시
+---
+
+```
+Weight = 50 Kg
+```
+
+# 정답 코드
+---
+
+```c
+#include <stdio.h>
+
+// 여기에 함수 선언
+void weight(int w);
+
+void main(void)
+{
+	weight(50);
+}
+
+void weight(int w)
+{
+	printf("Weight = %d Kg\n", w);
+}
+```
+
+# 메모
+---
+> printf 내부의 **\n** 습관화 필요
