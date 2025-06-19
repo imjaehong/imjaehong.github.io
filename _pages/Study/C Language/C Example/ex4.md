@@ -1,5 +1,5 @@
 ---
-title: "[ex1] printf 함수 연습"
+title: "[ex4] 가격 절사 판매"
 tags:
     - Study
     - Language
@@ -9,14 +9,18 @@ bookmark: true
 ---
 # 문제 설명
 ---
-printf 함수를 이용하여 출력 예시와 같이 인쇄되도록 코드를 설계하라
+변수 p에 저장된 값을 1000원 미만을 절사하는 코드를 구현하라
 
 ```c
 #include <stdio.h>
 
 void main(void)
 {
+	int p = 123456;
+
+	p = 
 	
+	printf("%d\n", p);
 }
 ```
 
@@ -24,11 +28,10 @@ void main(void)
 ---
 
 ```
-Hello C World!
-Welcome!!
+123000
 ```
 
-# 정답
+# 정답 코드
 ---
 
 ```c
@@ -36,8 +39,11 @@ Welcome!!
 
 void main(void)
 {
-	printf("Hello C World!\n");
-	printf("Welcome!!\n");
+	int p = 123456;
+
+	p = p - (p % 1000);
+
+	printf("%d\n", p);
 }
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: "[example1] 다양한 입력 및 출력 연습"
+title: "[ex2] 다양한 입력 및 출력 연습"
 tags:
     - Study
     - Language

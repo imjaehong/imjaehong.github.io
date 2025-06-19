@@ -1,0 +1,71 @@
+---
+title: "[ex5] 16진수의 자리수 분리"
+tags:
+    - Study
+    - Language
+date: "2025-03-18"
+thumbnail: "/assets/img/thumbnail/C.png"
+bookmark: true
+---
+# 문제 설명
+---
+4자리 16진수 수를 입력 받아 각 자리 값을 인쇄하라
+
+```c
+#include<stdio.h>
+
+void main(void)
+{
+	unsigned int x;
+	unsigned int x4, x3, x2, x1;
+
+	scanf("%x", &x);
+
+	// 코드 작성
+
+	printf("%X, %X, %X, %X", x4, x3, x2, x1);
+
+}
+```
+
+# 입력 예시
+---
+
+```
+AB9D
+```
+
+# 출력 예시
+---
+
+```
+A, B, 9, D
+```
+
+# 정답 코드
+---
+
+```c
+#include<stdio.h>
+
+void main(void)
+{
+	unsigned int x;
+	unsigned int x4, x3, x2, x1;
+
+	scanf("%x", &x);
+
+	// 코드 작성
+	x4 = (x / (16 * 16 * 16));
+	x3 = ((x % (16 * 16 * 16)) / (16 * 16));
+	x2 = ((x % (16 * 16)) / 16);
+	x1 = (x % 16);
+
+	printf("%X, %X, %X, %X", x4, x3, x2, x1);
+
+}
+```
+
+# 메모
+---
+> printf 내부의 **\n** 습관화 필요
