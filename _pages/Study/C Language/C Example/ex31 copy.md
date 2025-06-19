@@ -12,9 +12,6 @@ bookmark: true
 HH:MM:SS(시:분:초)의 형태로 표시하는 2개의 시간이 주어졌을 때, 시간차를 구하는 프로그램을 작성한다.
 2개의 시간은 최대 24시간 차이가 난다고 가정한다.
 
-![ex31](<../../../../assets/img/C Language/ex31.png>)
-
-
 ```c
 #include <stdio.h>
 
