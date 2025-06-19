@@ -1,5 +1,6 @@
 ---
 title: "[ex4] 가격 절사 판매"
+nav_order: 4
 tags:
     - Study
     - Language

@@ -1,5 +1,6 @@
 ---
 title: "[ex1] printf 함수 연습"
+nav_order: 1
 tags:
     - Study
     - Language

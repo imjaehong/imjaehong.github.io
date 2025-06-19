@@ -1,5 +1,6 @@
 ---
 title: "[ex5] 16진수의 자리수 분리"
+nav_order: 5
 tags:
     - Study
     - Language

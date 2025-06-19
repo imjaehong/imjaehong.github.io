@@ -1,5 +1,6 @@
 ---
 title: "[ex2] 다양한 입력 및 출력 연습"
+nav_order: 2
 tags:
     - Study
     - Language

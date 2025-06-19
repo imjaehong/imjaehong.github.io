@@ -1,5 +1,6 @@
 ---
 title: "[ex3] /, % 연산자의 활용 => 10진수 자리수 분리"
+nav_order: 3
 tags:
     - Study
     - Language
