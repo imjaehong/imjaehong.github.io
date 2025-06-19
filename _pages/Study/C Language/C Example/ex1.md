@@ -4,7 +4,7 @@ tags:
     - Study
     - Language
 date: "2025-03-18"
-thumbnail: "/assets/img/thumbnail/c_programing.png"
+thumbnail: "/assets/img/thumbnail/C.png"
 bookmark: true
 ---
 # 문제 설명
