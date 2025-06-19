@@ -28,6 +28,7 @@ Welcome!!
 ```
 
 # 정답
+---
 ```c
 #include <stdio.h>
 
@@ -37,8 +38,9 @@ void main(void)
 	printf("Welcome!!\n");
 }
 ```
-<pr>
 
 # 메모
+---
 **\n 습관화** 중요성을 느낌
+
 >이건 그냥 해봄
