@@ -4,8 +4,8 @@ tags:
     - Study
     - Language
 date: "2025-03-18"
-thumbnail: "/assets/img/thumbnail/book.jpg"
-bookmark: false
+thumbnail: "/assets/img/thumbnail/c_programing.png"
+bookmark: true
 ---
 # 문제 설명
 ---
