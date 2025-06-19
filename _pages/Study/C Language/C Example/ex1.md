@@ -1,8 +1,8 @@
 ---
 title: "[example1] printf 함수 연습"
 tags:
-    - book
-    - education
+    - Study
+    - Language
 date: "2025-03-18"
 thumbnail: "/assets/img/thumbnail/book.jpg"
 bookmark: false
@@ -46,5 +46,5 @@ void main(void)
 **\n 습관화** 중요성을 느낌
 
 > 이건 그냥 해봄
->
-> end
+> 
+> 블랙 배경이네
