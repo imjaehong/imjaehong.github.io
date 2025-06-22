@@ -1,5 +1,5 @@
 ---
-title: "2025-06-16 study"
+title: "example page"
 tags:
     - book
     - education
