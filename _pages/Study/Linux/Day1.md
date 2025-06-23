@@ -4,7 +4,7 @@ tags:
     - Study
     - Language
 date: "2025-06-23"
-thumbnail: "/assets/img/thumbnail/C.png"
+thumbnail: "/assets/img/thumbnail/Linux_logo.png"
 bookmark: true
 ---
 # 📂 1. 리눅스 시스템 기본 명령어
