@@ -126,7 +126,3 @@ Ctrl + w + v : Vim에서 수직 창 분할
 locate python3 > search.txt : locate 결과를 파일로 저장  
 grep -rn 'pip' > result.txt : 현재 디렉토리 내 'pip' 포함 줄을 재귀적으로 검색해 저장
 ```
-
----
----
-
