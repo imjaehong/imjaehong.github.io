@@ -127,7 +127,7 @@ locate python3 > search.txt : locate 결과를 파일로 저장
 grep -rn 'pip' > result.txt : 현재 디렉토리 내 'pip' 포함 줄을 재귀적으로 검색해 저장
 ```
 
-# Home Work
+# # Home Work
 ---
 
 ```
