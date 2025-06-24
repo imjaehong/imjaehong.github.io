@@ -8,22 +8,19 @@ thumbnail: "/assets/img/thumbnail/Linux_logo.png"
 bookmark: true
 ---
 
-# 📌 1. OpenCV란?
-
+# 📌 OpenCV란?
+---
 OpenCV(Open Source Computer Vision Library)는 **실시간 컴퓨터 비전** 및 **머신러닝**을 위한 오픈소스 라이브러리입니다.  
 다양한 이미지/비디오 처리 기능을 제공하며, Python, C++, Java 등 다양한 언어에서 사용 가능합니다.
 
+# 🚀 CUDA 모듈의 역할
 ---
-
-## 🚀 CUDA 모듈의 역할
-
 - GPU 가속을 활용한 **고속 이미지 처리** 수행
 - OpenCV의 일부 함수들은 CUDA를 통해 **병렬 처리**되어 성능을 향상시킴
 - 사용 예: `cv2.cuda.GpuMat`, `cv2.cuda.filter2D()`, `cv2.cuda.resize()` 등
 
+# 🛠️ 작업할 디렉토리 생성 및 환경 설정
 ---
-
-# 🛠️ 오늘 작업할 디렉토리 생성 및 환경 설정
 
 ```bash
 # 1. 작업 디렉토리 생성
