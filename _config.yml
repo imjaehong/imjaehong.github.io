@@ -28,7 +28,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  #- jekyll-loading-lazy
+  - jekyll-loading-lazy
 
 exclude:
   - docs/
