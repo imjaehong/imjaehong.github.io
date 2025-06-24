@@ -92,22 +92,19 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 - RGB는 화면 출력/처리에 적합한 **디지털 색 표현 방식**  
 - HSL은 색상 구성요소를 분리해 **사람이 이해하거나 조절하기 쉬운 방식**
 
-# Memo
 ---
 
-```
-vi ex1.py : python 스크립트 생성
-python ex1.py : 생성된 스크립트 실행
-```
-
+# Memo
+- vi ex1.py : python 스크립트 생성
+- python ex1.py : 생성된 스크립트 실행
 
 # 실습
 ---
 
-## ex1.py
----
+### 이미지를 Read / Write / Display
 
 ```py
+# ex1.py
 import numpy as np
 import cv2
 
@@ -133,10 +130,20 @@ cv2.imwrite("output.png", img)
 cv2.destroyAllWindows()
 ```
 
-## ex2.py
+### Quiz
+
+1. print(img.shape)의 출력 결과는 무슨 의미일까?
+
+2. 본인이 좋아하는 사진을 web 에서 다운받아서 OpenCV API를 사용해서 Display 및 파일로 저장해보자.
+
+3. 현재는 별도의 키 입력이 있을 때까지 cv2.waitKey(0) 함수에서 대기하게 된다. 코드를 추가해서 소문자 “s” 키를 입력받을 때만 이미지 파일을 저장하고 다른 키가 입력되면 이미지 파일을 저장하지 않게 수정해보자.
+
 ---
 
+### ex2.py
+
 ```py
+# ex2.py
 import numpy as np
 import cv2
 
@@ -164,7 +171,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-## Quiz
+### Quiz
 ---
 
 ```
@@ -174,7 +181,7 @@ cv2.destroyAllWindows()
 
 3. HSV 로 변환된 이미지를 BGR 이 아닌 RGB 로 다시 변환해서 출력해 보자.
 
-4. COLOR_RBG2GARY 를 사용해서 흑백으로 변환해 출력해보자.
+4. COLOR_RGB2GRAY 를 사용해서 흑백으로 변환해 출력해보자.
 ```
 
 ## ex3.py
