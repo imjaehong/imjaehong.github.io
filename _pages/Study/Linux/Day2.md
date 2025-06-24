@@ -109,7 +109,7 @@ import numpy as np
 import cv2
 
 # 이미지 파일을 Read
-img = cv2.imread("chu.jpg")
+img = cv2.imread("len.jpg")
 
 # Image 란 이름의 Display 창 생성
 cv2.namedWindow("image", cv2.WINDOW_NORMAL)
@@ -123,12 +123,14 @@ cv2.imshow("image", img)
 # 별도 키 입력이 있을때 까지 대기
 cv2.waitKey(0)
 
-# output.png 로 읽은 이미지 파일을 저장
-cv2.imwrite("output.png", img)
+# ex1_output.jpg 로 읽은 이미지 파일을 저장
+cv2.imwrite("ex1_output.jpg", img)
 
 # Destory all windows
 cv2.destroyAllWindows()
 ```
+
+![result](../../../assets/img/Linux/ex1_output.jpg "ex1_output")
 
 ### ❓ Quiz: 이미지 Read / Write / Display
 
@@ -168,9 +170,6 @@ hsv = cv2.cvtColor(color, cv2.COLOR_BGR2HSV)
 h,s,v = cv2.split(hsv)
 hsv_split = np.concatenate((h,s,v),axis=1)
 cv2.imshow("Split HSV", hsv_split)
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
 ```
 
 ### ❓ Quiz : RGB/HSV Color Space (색 공간)
@@ -178,11 +177,11 @@ cv2.destroyAllWindows()
 ```
 1. 위 색공간 이미지의 링크로 이동해서 각 색 공간의 표현 방법을 이해해 보자.
 
-2. HSV color space 가 어떤 경우에 효과적으로 사용될까?
+2. HSV color space가 어떤 경우에 효과적으로 사용될까?
 
-3. HSV 로 변환된 이미지를 BGR 이 아닌 RGB 로 다시 변환해서 출력해 보자.
+3. HSV로 변환된 이미지를 BGR이 아닌 RGB로 다시 변환해서 출력해 보자.
 
-4. COLOR_RGB2GRAY 를 사용해서 흑백으로 변환해 출력해보자.
+4. COLOR_RGB2GRAY를 사용해서 흑백으로 변환해 출력해 보자.
 ```
 
 ---
@@ -236,6 +235,7 @@ cv2.destroyAllWindows()
 ### 💡 역상 (Reverse Image)
 
 ```py
+# ex4.py
 import numpy as np
 import cv2
 
@@ -262,6 +262,7 @@ cv2.destroyAllWindows()
 ### 💡 이진화 (Binary)
 
 ```py
+# ex5.py
 import numpy as np
 import cv2
 
@@ -290,7 +291,7 @@ cv2.destroyAllWindows()
 ### 💡 흐림효과 (Blur)
 
 ```py
-#ex6.py
+# ex6.py
 import numpy as np
 import cv2
 
@@ -371,14 +372,16 @@ cv2.destroyAllWindows()
 ### ❓ Quiz : 배열 병합 (add Weighted)
 
 ```
-1. Laplacian 변환을 적용해 보자.
+1. lower_red 값의 범위를 변경해 보자.
 
-2. Canny Edge Detection을 적용해 보자.
+2. upper_red 값의 범위를 변경해 보자.
+
+3. addWeighted의 gamma 값을 변경해 보자.
 ```
 
 ---
 
-### 💡 채널 분리 및 병합합
+### 💡 채널 분리 및 병합
 
 ```py
 # ex9.py
@@ -398,10 +401,18 @@ cv2.waitKey()
 cv2.destroyAllWindows()
 ```
 
-### ❓ Quiz
+### ❓ Quiz : 채널 분리 및 병합
 
 ```
-??
+1. Numpy 형태의 채널 분리를 적용해 보자.
+b = src[:, :, 0]
+g = src[:, :, 1]
+r = src[:, :, 2]
+
+2. 빈 이미지를 적용해 보자.
+height, width, channel = src.shape
+zero = np.zeros((height, width, 1), dtype=np.uint8)
+bgz = cv2.merge((b, g, zero))
 ```
 
 ---
