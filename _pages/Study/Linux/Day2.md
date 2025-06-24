@@ -94,7 +94,7 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 
 ---
 
-# Memo
+### 📝 메모
 - vi ex1.py : python 스크립트 생성
 - python ex1.py : 생성된 스크립트 실행
 
@@ -140,7 +140,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### ex2.py
+### RGB/HSV Color Space (색 공간)
 
 ```py
 # ex2.py
