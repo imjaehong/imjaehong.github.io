@@ -98,10 +98,10 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 - vi ex1.py : python 스크립트 생성
 - python ex1.py : 생성된 스크립트 실행
 
-# 실습
+# 👨‍💻 실습
 ---
 
-### 이미지를 Read / Write / Display
+### 💡 이미지 Read / Write / Display
 
 ```py
 # ex1.py
@@ -130,17 +130,19 @@ cv2.imwrite("output.png", img)
 cv2.destroyAllWindows()
 ```
 
-### Quiz
+### ❓ Quiz: 이미지 Read / Write / Display
 
+```
 1. print(img.shape)의 출력 결과는 무슨 의미일까?
 
 2. 본인이 좋아하는 사진을 web 에서 다운받아서 OpenCV API를 사용해서 Display 및 파일로 저장해보자.
 
 3. 현재는 별도의 키 입력이 있을 때까지 cv2.waitKey(0) 함수에서 대기하게 된다. 코드를 추가해서 소문자 “s” 키를 입력받을 때만 이미지 파일을 저장하고 다른 키가 입력되면 이미지 파일을 저장하지 않게 수정해보자.
+```
 
 ---
 
-### RGB/HSV Color Space (색 공간)
+### 💡 RGB/HSV Color Space (색 공간)
 
 ```py
 # ex2.py
@@ -171,8 +173,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-### Quiz
----
+### ❓ Quiz : RGB/HSV Color Space (색 공간)
 
 ```
 1. 위 색공간 이미지의 링크로 이동해서 각 색 공간의 표현 방법을 이해해 보자.
@@ -184,10 +185,12 @@ cv2.destroyAllWindows()
 4. COLOR_RGB2GRAY 를 사용해서 흑백으로 변환해 출력해보자.
 ```
 
-## ex3.py
 ---
 
+### 💡 Crop / Resize (자르기 / 크기 조정)
+
 ```py
+# ex3.py
 import numpy as np
 import cv2
 
@@ -216,9 +219,7 @@ cv2.destroyAllWindows()
 ![result](../../../assets/img/Linux/len_cropped.jpg)
 ![result](../../../assets/img/Linux/len_resized.jpg)
 
-
-## Quiz
----
+### ❓ Quiz : Crop / Resize (자르기 / 크기 조정)
 
 ```
 1. Input image 를 본인이 좋아하는 인물 사진으로 변경해서 적용하자. 그리고 본인이 사용한 input image 의 size 를 확인해 보자.
@@ -230,8 +231,9 @@ cv2.destroyAllWindows()
 4. openCV 의 rotate API 를 사용해서 우측으로 90도만큼 회전된 이미지를 출력해 보자.
 ```
 
-## ex4.py
 ---
+
+### 💡 역상 (Reverse Image)
 
 ```py
 import numpy as np
@@ -249,15 +251,15 @@ cv2.destroyAllWindows()
 
 ![result](../../../assets/img/Linux/len_thresh.jpg)
 
-## Quiz
----
+### ❓ Quiz : 역상 (Reverse Image)
 
 ```
-1. AND, OR, XOR 연산에 대해서 확인해 보자. 하지말자.
+1. AND, OR, XOR 연산에 대해서 확인해 보자.
 ```
 
-## ex5.py
 ---
+
+### 💡 이진화 (Binary)
 
 ```py
 import numpy as np
@@ -277,17 +279,18 @@ cv2.destroyAllWindows()
 
 ![result](../../../assets/img/Linux/len_gray.jpg)
 
-## Quiz
----
+### ❓ Quiz : 이진화 (Binary)
 
 ```
 1. 임계값을 변화시켜 보자.
 ```
 
-## ex6.py
 ---
 
+### 💡 흐림효과 (Blur)
+
 ```py
+#ex6.py
 import numpy as np
 import cv2
 
@@ -303,8 +306,7 @@ cv2.destroyAllWindows()
 
 ![result](../../../assets/img/Linux/len_blur.jpg)
 
-## Quiz
----
+### ❓ Quiz : 흐림효과 (Blur)
 
 ```
 1. Kernel Size를 변경하여 보자.
@@ -312,10 +314,12 @@ cv2.destroyAllWindows()
 2. borderType을 변경하여 보자.(cv2.BORDER_REFLECT)
 ```
 
-## ex7.py
 ---
 
+### 💡 가장자리 검출 (Edge)
+
 ```py
+# ex7.py
 import numpy as np
 import cv2
 
@@ -333,8 +337,7 @@ cv2.destroyAllWindows()
 
 ![result](../../../assets/img/Linux/len_edge.jpg)
 
-## Quiz
----
+### ❓ Quiz : 가장자리 검출 (Edge)
 
 ```
 1. Laplacian 변환을 적용해 보자.
@@ -342,10 +345,12 @@ cv2.destroyAllWindows()
 2. Canny Edge Detection을 적용해 보자.
 ```
 
-## ex8.py
 ---
 
+### 💡 배열 병합 (add Weighted)
+
 ```py
+# ex8.py
 import numpy as np
 import cv2
 
@@ -363,8 +368,7 @@ cv2.destroyAllWindows()
 
 ![result](../../../assets/img/Linux/len_edge.jpg)
 
-## Quiz
----
+### ❓ Quiz : 배열 병합 (add Weighted)
 
 ```
 1. Laplacian 변환을 적용해 보자.
@@ -372,10 +376,12 @@ cv2.destroyAllWindows()
 2. Canny Edge Detection을 적용해 보자.
 ```
 
-## ex9.py
 ---
 
+### 💡 채널 분리 및 병합합
+
 ```py
+# ex9.py
 import numpy as np
 import cv2
 
@@ -392,13 +398,19 @@ cv2.waitKey()
 cv2.destroyAllWindows()
 ```
 
-
-## Quiz
----
+### ❓ Quiz
 
 ```
-1. 동영상이 너무 빠르게 재생된다. 이유를 찾아보고 정상적인 속도로 재생될 수 있도록 수정해 보자.
+??
+```
 
+---
+
+
+ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ
+```
+1. 동영상이 너무 빠르게 재생된다. 이유를 찾아보고 정상적인 속도로 재생될 수 있도록 수정해 보자.
+ㄱ
 2. 동영상이 끝까지 재생되면 더 이상 frame을 읽지 못해 종료된다. 동영상이 끝까지 재생되면 다시 처음부터 반복될 수 있도록 수정해 보자.
 
 3. 동영상 크기를 반으로 resize해서 출력해 보자.
@@ -406,7 +418,7 @@ cv2.destroyAllWindows()
 4. 동영상 재생 중 'c' 키 입력을 받으면 해당 프레임을 이미지 파일로 저장하는 코드를 작성해 보자. 파일 이름은 001.jpg, 002.jpg 등으로 overwrite 되지 않게 하자.
 ```
 
-## Quiz Result
+### Quiz Result
 ---
 
 ```py
@@ -449,7 +461,7 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-## ex10.py
+### ex10.py
 ---
 
 ```py
@@ -481,7 +493,7 @@ while(cap.isOpened()):
         break
 ```
 
-## Quiz
+### Quiz
 ---
 
 ```
@@ -493,14 +505,14 @@ while(cap.isOpened()):
 > sudo apt install v4l-utils : 카메라의 지원 가능한 해상도를 확인하기 위한 프로그램?
 > v4l2-ctl -d /dev/video0 --list-formats-ext : 해상도 확인
 
-## ex11.py
+### ex11.py
 ---
 
 ```py
 롸?
 ```
 
-## Quiz
+### Quiz
 ---
 
 ```
