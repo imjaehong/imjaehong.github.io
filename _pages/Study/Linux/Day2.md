@@ -337,7 +337,7 @@ cv2.destroyAllWindows()
 2. Canny Edge Detection을 적용해 보자.
 ```
 
-## ex7.py
+## ex8.py
 ---
 
 ```py
@@ -367,7 +367,7 @@ cv2.destroyAllWindows()
 2. Canny Edge Detection을 적용해 보자.
 ```
 
-## ex8.py
+## ex9.py
 ---
 
 ```py
@@ -392,17 +392,114 @@ cv2.destroyAllWindows()
 ---
 
 ```
-1. Numpy 형태의 채널 분리를 적용해 보자.
+1. 동영상이 너무 빠르게 재생된다. 이유를 찾아보고 정상적인 속도로 재생될 수 있도록 수정해 보자.
 
-b = src[:, :, 0]
-g = src[:, :, 1]
-r = src[:, :, 2]
+2. 동영상이 끝까지 재생되면 더 이상 frame을 읽지 못해 종료된다. 동영상이 끝까지 재생되면 다시 처음부터 반복될 수 있도록 수정해 보자.
 
-2. 빈 이미지를 적용해 보자.
+3. 동영상 크기를 반으로 resize해서 출력해 보자.
 
-height, width, channel = src.shape
-zero = np.zeros((height, width, 1), dtype=np.uint8)
-bgz = cv2.merge((b, g, zero))
+4. 동영상 재생 중 'c' 키 입력을 받으면 해당 프레임을 이미지 파일로 저장하는 코드를 작성해 보자. 파일 이름은 001.jpg, 002.jpg 등으로 overwrite 되지 않게 하자.
 ```
 
+## Quiz Result
+---
 
+```py
+import numpy as np
+import cv2
+
+cap = cv2.VideoCapture("son.mp4")
+save_count = 1  # 저장할 이미지 번호 초기화
+
+while cap.isOpened():
+    ret, frame = cap.read()
+
+    # (2) 프레임 읽기 실패 → 영상 끝 → 처음부터 다시
+    if not ret:
+        print("Restarting video...")
+        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        continue
+
+    # (3) 프레임 크기 50% 축소
+    resized = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
+
+    # 출력
+    cv2.imshow("Resized Frame", resized)
+
+    # (1) 고정된 속도로 재생 (약 30fps)
+    key = cv2.waitKey(33)
+
+    # (4) 'c' 키 입력 시 이미지 저장
+    if key & 0xFF == ord('c'):
+        filename = f"{save_count:03}.jpg"
+        cv2.imwrite(filename, resized)
+        print(f"Saved {filename}")
+        save_count += 1
+
+    # 'q' 키 입력 시 종료
+    if key & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
+## ex10.py
+---
+
+```py
+import numpy as np
+import cv2
+
+# Read from the first camera device
+cap = cv2.VideoCapture(0)
+
+w = 640 #1280#1920
+h = 480 #720#1080
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, w)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, h)
+
+# 성공적으로 video device 가 열렸으면 while 문 반복
+while(cap.isOpened()):
+    # 한 프레임을 읽어옴
+    ret, frame = cap.read()
+    if ret is False:
+        print("Can't receive frame (stream end?). Exiting ...")
+        break
+
+    # Display
+    cv2.imshow("Camera", frame)
+
+    # 1 ms 동안 대기하며 키 입력을 받고 'q' 입력 시 종료
+    key = cv2.waitKey(1)
+    if key & 0xFF == ord('q'):
+        break
+```
+
+## Quiz
+---
+
+```
+1. 가지고 있는 카메라의 지원 가능한 해상도를 확인 후 카메라 해상도를 변경해 보자.
+
+2. 카메라 Input을 "output.mp4" 동영상 파일로 저장하도록 코드를 추가해 보자.
+```
+
+> sudo apt install v4l-utils : 카메라의 지원 가능한 해상도를 확인하기 위한 프로그램?
+> v4l2-ctl -d /dev/video0 --list-formats-ext : 해상도 확인
+
+## ex11.py
+---
+
+```py
+롸?
+```
+
+## Quiz
+---
+
+```
+1. 가지고 있는 카메라의 지원 가능한 해상도를 확인 후 카메라 해상도를 변경해 보자.
+
+2. 카메라 Input을 "output.mp4" 동영상 파일로 저장하도록 코드를 추가해 보자.
+```
