@@ -97,6 +97,8 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 ### 📝 메모
 - vi ex1.py : python 스크립트 생성
 - python ex1.py : 생성된 스크립트 실행
+- jpg : 파일이 작고 속도가 빠르며, 주로 사진이나 웹 배경 이미지에 사용
+- png : 화질 보존, 투명 배경이 필요한 경우 사용
 
 # 👨‍💻 실습
 ---
@@ -109,7 +111,7 @@ import numpy as np
 import cv2
 
 # 이미지 파일을 Read
-img = cv2.imread("len.jpg")
+img = cv2.imread("Rengoku.jpg")
 
 # Image 란 이름의 Display 창 생성
 cv2.namedWindow("image", cv2.WINDOW_NORMAL)
@@ -130,7 +132,7 @@ cv2.imwrite("ex1_output.jpg", img)
 cv2.destroyAllWindows()
 ```
 
-![result](../../../assets/img/Linux/ex1_output.jpg "ex1_output")
+![alt text](../../../assets/img/Linux/ex1_output.jpg "ex1_output")
 
 ### ❓ Quiz: 이미지 Read / Write / Display
 
@@ -152,7 +154,7 @@ import numpy as np
 import cv2
 
 # 이미지 파일을 Read 하고 Color space 정보 출력
-color = cv2.imread("str.png", cv2.IMREAD_COLOR)
+color = cv2.imread("Rengoku.jpg", cv2.IMREAD_COLOR)
 print(color.shape)
 
 height,width,channels = color.shape
@@ -194,12 +196,12 @@ import numpy as np
 import cv2
 
 # 이미지 파일을 Read
-img = cv2.imread("len.jpg")
+img = cv2.imread("Rengoku.jpg")
 
 # Crop 300x400 from original image from (100, 50)=(x, y)
 # 세로(y): 100:500 →  500 - 100 = 400픽셀
-# 가로(x): 600:1100 → 1100 - 600 = 500픽셀
-cropped = img[100:500, 600:1100]
+# 가로(x): 500:1200 → 1200 - 500 = 700픽셀
+cropped = img[100:500, 500:1200]
 
 # Resize cropped image from 300x400 to 400x200
 resized = cv2.resize(cropped, (800,200))
@@ -208,15 +210,15 @@ resized = cv2.resize(cropped, (800,200))
 cv2.imshow("Original", img)
 cv2.imshow("Cropped image", cropped)
 cv2.imshow("Resized image", resized)
-cv2.imwrite("len_cropped.jpg", cropped)
-cv2.imwrite("len_resized.jpg", resized)
+cv2.imwrite("ex3_cropped.jpg", cropped)
+cv2.imwrite("ex3_resized.jpg", resized)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-![result](../../../assets/img/Linux/len_cropped.jpg)
-![result](../../../assets/img/Linux/len_resized.jpg)
+![alt text](../../../assets/img/Linux/ex3_cropped.jpg "ex3_cropped")
+![alt text](../../../assets/img/Linux/ex3_resized.jpg "ex3_resized")
 
 ### ❓ Quiz : Crop / Resize (자르기 / 크기 조정)
 
@@ -239,17 +241,18 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 
-src = cv2.imread("len.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("Rengoku.jpg", cv2.IMREAD_COLOR)
 dst = cv2.bitwise_not(src)
 
 cv2.imshow("src", src)
 cv2.imshow("dst", dst)
+cv2.imwrite("ex4_reverse.jpg", dst)
 
 cv2.waitKey()
 cv2.destroyAllWindows()
 ```
 
-![result](../../../assets/img/Linux/len_thresh.jpg)
+![alt text](../../../assets/img/Linux/ex4_reverse.jpg "ex4_reverse")
 
 ### ❓ Quiz : 역상 (Reverse Image)
 
@@ -266,19 +269,19 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 
-src = cv2.imread("len.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("Rengoku.jpg", cv2.IMREAD_COLOR)
 gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 
 ret, dst = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
 
 cv2.imshow("dst", dst)
-cv2.imwrite("len_gray.jpg", dst)
+cv2.imwrite("ex5_binary.jpg", dst)
 
 cv2.waitKey()
 cv2.destroyAllWindows()
 ```
 
-![result](../../../assets/img/Linux/len_gray.jpg)
+![alt text](../../../assets/img/Linux/ex5_binary.jpg "ex5_binary")
 
 ### ❓ Quiz : 이진화 (Binary)
 
@@ -295,17 +298,17 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 
-src = cv2.imread("len.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("Rengoku.jpg", cv2.IMREAD_COLOR)
 dst = cv2.blur(src, (9, 9), anchor=(-1,- 1), borderType=cv2.BORDER_DEFAULT)
 
 cv2.imshow("dst", dst)
-cv2.imwrite("len_blur.jpg", dst)
+cv2.imwrite("ex6_blur.jpg", dst)
 
 cv2.waitKey()
 cv2.destroyAllWindows()
 ```
 
-![result](../../../assets/img/Linux/len_blur.jpg)
+![alt text](../../../assets/img/Linux/ex6_blur.jpg "ex6_blur")
 
 ### ❓ Quiz : 흐림효과 (Blur)
 
@@ -324,19 +327,19 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 
-src = cv2.imread("len.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("Rengoku.jpg", cv2.IMREAD_COLOR)
 gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 
 sobel = cv2.Sobel(gray, cv2.CV_8U, 1, 0, 3)
 
 cv2.imshow("sobel", sobel)
-cv2.imwrite("len_edge.jpg", sobel)
+cv2.imwrite("ex7_edge.jpg", sobel)
 
 cv2.waitKey()
 cv2.destroyAllWindows()
 ```
 
-![result](../../../assets/img/Linux/len_edge.jpg)
+![alt text](../../../assets/img/Linux/ex7_edge.jpg "ex7_edge")
 
 ### ❓ Quiz : 가장자리 검출 (Edge)
 
@@ -355,19 +358,49 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 
-src = cv2.imread("len.jpg", cv2.IMREAD_COLOR)
-gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
+src = cv2.imread("RGB.png", cv2.IMREAD_COLOR)
+hsv = cv2.cvtColor(src, cv2.COLOR_BGR2HSV)
 
-sobel = cv2.Sobel(gray, cv2.CV_8U, 1, 0, 3)
+# 1. Red 마스크 생성
+lower_red = cv2.inRange(hsv, (0, 100, 100), (5, 255, 255))
+upper_red = cv2.inRange(hsv, (170, 100, 100), (180, 255, 255))
+mask_red = cv2.addWeighted(lower_red, 1.0, upper_red, 1.0, 0.0)
 
-cv2.imshow("sobel", sobel)
-cv2.imwrite("len_edge.jpg", sobel)
+# 2. Green 마스크 생성
+mask_green = cv2.inRange(hsv, (40, 100, 100), (85, 255, 255))
+
+# 3. Blue 마스크 생성
+mask_blue = cv2.inRange(hsv, (100, 100, 100), (130, 255, 255))
+
+# 4. 각 색상 추출 (HSV → BGR 변환 포함)
+red = cv2.bitwise_and(hsv, hsv, mask=mask_red)
+green = cv2.bitwise_and(hsv, hsv, mask=mask_green)
+blue = cv2.bitwise_and(hsv, hsv, mask=mask_blue)
+
+red = cv2.cvtColor(red, cv2.COLOR_HSV2BGR)
+green = cv2.cvtColor(green, cv2.COLOR_HSV2BGR)
+blue = cv2.cvtColor(blue, cv2.COLOR_HSV2BGR)
+
+# 5. 화면 출력
+cv2.imshow("Original", src)
+cv2.imshow("Red", red)
+cv2.imshow("Green", green)
+cv2.imshow("Blue", blue)
+
+cv2.imwrite("ex8_original.png", src)
+cv2.imwrite("ex8_red.png", red)
+cv2.imwrite("ex8_green.png", green)
+cv2.imwrite("ex8_blue.png", blue)
+
 
 cv2.waitKey()
 cv2.destroyAllWindows()
 ```
 
-![result](../../../assets/img/Linux/len_edge.jpg)
+![alt text](../../../assets/img/Linux/ex8_original.png "ex8_original")
+![alt text](../../../assets/img/Linux/ex8_red.png "ex8_red")
+![alt text](../../../assets/img/Linux/ex8_green.png "ex8_green")
+![alt text](../../../assets/img/Linux/ex9_blue_gray.png "ex8_blue")
 
 ### ❓ Quiz : 배열 병합 (add Weighted)
 
@@ -388,18 +421,35 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 
-src = cv2.imread("rain.png", cv2.IMREAD_COLOR)
+# 이미지 읽기
+src = cv2.imread("RGB.png", cv2.IMREAD_COLOR)
+
+# 채널 분리
 b, g, r = cv2.split(src)
+
+# 채널 순서 변경 (RGB처럼 보이게)
 inverse = cv2.merge((r, g, b))
 
+# 화면 출력
 cv2.imshow("b", b)
 cv2.imshow("g", g)
 cv2.imshow("r", r)
 cv2.imshow("inverse", inverse)
 
+# 이미지 저장
+cv2.imwrite("ex9_blue_gray.png", b)
+cv2.imwrite("ex9_green_gray.png", g)
+cv2.imwrite("ex9_red_gray.png", r)
+cv2.imwrite("ex9_inverse.png", inverse)
+
 cv2.waitKey()
 cv2.destroyAllWindows()
 ```
+
+![alt text](../../../assets/img/Linux/ex9_blue_gray.png "ex9_blue_gray")
+![alt text](../../../assets/img/Linux/ex9_green_gray.png "ex9_green_gray")
+![alt text](../../../assets/img/Linux/ex9_red_gray.png "ex9_red_gray")
+![alt text](../../../assets/img/Linux/ex9_inverse.png "ex9_inverse")
 
 ### ❓ Quiz : 채널 분리 및 병합
 
@@ -417,22 +467,10 @@ bgz = cv2.merge((b, g, zero))
 
 ---
 
-
-ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ
-```
-1. 동영상이 너무 빠르게 재생된다. 이유를 찾아보고 정상적인 속도로 재생될 수 있도록 수정해 보자.
-ㄱ
-2. 동영상이 끝까지 재생되면 더 이상 frame을 읽지 못해 종료된다. 동영상이 끝까지 재생되면 다시 처음부터 반복될 수 있도록 수정해 보자.
-
-3. 동영상 크기를 반으로 resize해서 출력해 보자.
-
-4. 동영상 재생 중 'c' 키 입력을 받으면 해당 프레임을 이미지 파일로 저장하는 코드를 작성해 보자. 파일 이름은 001.jpg, 002.jpg 등으로 overwrite 되지 않게 하자.
-```
-
-### Quiz Result
----
+### 💡 기동영상 파일을 읽고 보여주기
 
 ```py
+# ex10.py
 import numpy as np
 import cv2
 
@@ -455,7 +493,7 @@ while cap.isOpened():
     cv2.imshow("Resized Frame", resized)
 
     # (1) 고정된 속도로 재생 (약 30fps)
-    key = cv2.waitKey(33)
+    key = cv2.waitKey(90)
 
     # (4) 'c' 키 입력 시 이미지 저장
     if key & 0xFF == ord('c'):
@@ -472,10 +510,24 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-### ex10.py
+### ❓ Quiz : 동영상 파일을 읽고 보여주기
+
+```
+1. 동영상이 너무 빠르게 재생된다. 이유를 찾아보고 정상적인 속도로 재생될 수 있도록 수정해 보자.
+
+2. 동영상이 끝까지 재생되면 더 이상 frame을 읽지 못해 종료된다. 동영상이 끝까지 재생되면 다시 처음부터 반복될 수 있도록 수정해 보자.
+
+3. 동영상 크기를 반으로 resize해서 출력해 보자.
+
+4. 동영상 재생 중 'c' 키 입력을 받으면 해당 프레임을 이미지 파일로 저장하는 코드를 작성해 보자. 파일 이름은 001.jpg, 002.jpg 등으로 overwrite 되지 않게 하자.
+```
+
 ---
 
+### 💡 카메라로부터 input 을 받아 보여주고 동영상 파일로 저장하기
+
 ```py
+# ex11.py
 import numpy as np
 import cv2
 
@@ -502,10 +554,12 @@ while(cap.isOpened()):
     key = cv2.waitKey(1)
     if key & 0xFF == ord('q'):
         break
+
+cap.release()
+cv2.destroyAllWindows()
 ```
 
-### Quiz
----
+### ❓ Quiz : 카메라로부터 input 을 받아 보여주고 동영상 파일로 저장하기
 
 ```
 1. 가지고 있는 카메라의 지원 가능한 해상도를 확인 후 카메라 해상도를 변경해 보자.
@@ -513,21 +567,72 @@ while(cap.isOpened()):
 2. 카메라 Input을 "output.mp4" 동영상 파일로 저장하도록 코드를 추가해 보자.
 ```
 
-> sudo apt install v4l-utils : 카메라의 지원 가능한 해상도를 확인하기 위한 프로그램?
-> v4l2-ctl -d /dev/video0 --list-formats-ext : 해상도 확인
+### 📝 메모
+- sudo apt install v4l-utils : 카메라 지원 해상도 확인용 도구 설치
+- v4l2-ctl -d /dev/video0 --list-formats-ext : 해당 카메라의 해상도 및 포맷 목록 출력
 
-### ex11.py
 ---
+
+### 💡 Text / Line / Ractangle
 
 ```py
-롸?
+# ex12.py
+import numpy as np
+import cv2
+
+cap = cv2.VideoCapture(5)
+
+# 동그라미를 그릴 좌표를 저장할 리스트
+circle_centers = []
+
+def draw_circle(event, x, y, flags, param):
+    if event == cv2.EVENT_LBUTTONDOWN:
+        # 마우스 왼쪽 버튼 클릭 시 좌표 저장
+        circle_centers.append((x, y))
+
+cv2.namedWindow("Camera")
+cv2.setMouseCallback("Camera", draw_circle)
+
+topLeft = (50, 50)
+bottomRight = (300, 300)
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    # Line
+    cv2.line(frame, topLeft, bottomRight, (0, 255, 0), 3)
+
+    # Rectangle
+    cv2.rectangle(frame,
+                  [pt+30 for pt in topLeft], [pt-30 for pt in bottomRight], (255, 0, 255), 3)
+
+    # Text
+    font = cv2.FONT_ITALIC
+    cv2.putText(frame, 'me',
+                [pt+40 for pt in bottomRight], font, 2, (255, 0, 255), 5)
+
+    # 저장된 좌표에 동그라미 그리기
+    for center in circle_centers:
+        cv2.circle(frame, center, 30, (255, 255, 0), 3)  # 반지름 30, 두께 3, 색상 (BGR)
+
+    cv2.imshow("Camera", frame)
+    key = cv2.waitKey(1)
+    if key & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
 ```
 
-### Quiz
----
+### ❓ Quiz : Text / Line / Ractangle
 
 ```
-1. 가지고 있는 카메라의 지원 가능한 해상도를 확인 후 카메라 해상도를 변경해 보자.
+1. Text 문구 / Font / 색상 / 크기 / 굵기 / 출력위치 등 모든 값을 변경해 보자.
 
-2. 카메라 Input을 "output.mp4" 동영상 파일로 저장하도록 코드를 추가해 보자.
+2. 동그라미를 그리는 함수를 찾아서 적용해 보자.
+
+3. 마우스 왼쪽 버튼을 click 하면 해당 위치에 동그라미가 그려지도록 코드를 추가해 보자.
+(Reference : cv2.EVENT_LBUTTONDOWN)
 ```
