@@ -11,6 +11,7 @@ bookmark: true
 ---
 
 ```
+ctrl + alt + T : 터미널을 새 창으로 실행
 python3 : Python 3 버전 확인 (예: 3.10.12)  
 df -h : 디스크 파티션 사용량 확인 (사이즈 단위 human-readable)  
 ifconfig : IP 주소 및 네트워크 정보 확인 (net-tools 필요)  
