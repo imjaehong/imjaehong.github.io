@@ -38,6 +38,7 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 ```
 
 # ✅ 설치 확인 (Python 인터프리터 실행)
+---
 
 ```py
 >>> import numpy as np
@@ -55,12 +56,12 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 # 🎨 색상 정보
 ---
 
-## 🔗 참고 사이트
+### 🔗 참고 사이트
 - [W3Schools - RGB Colors](https://www.w3schools.com/colors/colors_rgb.asp)
 
 ---
 
-## 🌈 RGB (Red, Green, Blue)
+### 🌈 RGB (Red, Green, Blue)
 - 각 색상 채널: **0~255 (8bit)**
   - R (Red): 8bit
   - G (Green): 8bit
@@ -69,7 +70,7 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 
 ---
 
-## 🎨 HSL (Hue, Saturation, Lightness)
+### 🎨 HSL (Hue, Saturation, Lightness)
 - **H**: 색상 (Hue) → 0 ~ 360°
 - **S**: 채도 (Saturation) → 0 ~ 100%
 - **L**: 밝기 (Lightness) → 0 ~ 100%
