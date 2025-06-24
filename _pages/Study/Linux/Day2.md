@@ -78,6 +78,7 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 ---
 
 ### 🔄 RGB vs HSL 차이점
+
 | 항목 | RGB | HSL |
 | :--: | :--: | :--: |
 | 구성 | Red, Green, Blue (각 0~255) | Hue (0~360), Saturation & Lightness (0~100%) |
