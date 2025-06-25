@@ -1,5 +1,5 @@
 ---
-title: "Day3 : ?"
+title: "Day3 : Perceptron"
 tags:
     - Study
     - Language
