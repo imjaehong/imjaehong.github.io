@@ -120,7 +120,7 @@ for x in X_xor:
     print(f"Input: {x}, Predicted Output: {ppn_xor.predict(x)}")
 ```
 
-### ✅ Result: AND Gate Perceptron
+### ✅ Result: AND & OR & NAND & XOR Gate Perceptron
 
 ```
  AND Gate Training
@@ -196,8 +196,6 @@ Input: [1 0], Predicted Output: 0
 Input: [1 1], Predicted Output: 0
 ```
 
-
-
 ### 💡 Code : # 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
 
 ```py
@@ -243,7 +241,7 @@ plot_decision_boundary(X_nand, y_nand, ppn_nand, title='NAND Gate Decision Bound
 plot_decision_boundary(X_xor, y_xor, ppn_xor, title='XOR Gate Decision Boundary')
 ```
 
-### ✅ Result: 경계 결정 시각화
+### ✅ Result: 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
 
 ![alt text](<../../../assets/img/Linux/AND 게이트 결정 경계 시각화.png> "AND 게이트 결정 경계 시각화")
 ![alt text](<../../../assets/img/Linux/OR 게이트 결정 경계 시각화.png> "OR 게이트 결정 경계 시각화")
@@ -269,12 +267,14 @@ plt.grid(True)
 plt.show()
 ```
 
-### ✅ Result: 오류 시각화
+### ✅ Result: 오류 시각화 (AND, OR, NAND, XOR)
 
 ![alt text](<../../../assets/img/Linux/오류 시각화.png> "오류 시각화")
 
 ### 💬 Comment: AND Gate Perceptron
-- 퍼셉트론이 어떻게 논리 연산(AND)을 학습하는지 직관적으로 이해할 수 있었다.
+- XOR은 선형 분리 불가능한 문제이기 때문에
+단층 퍼셉트론으로는 해결할 수 없다.
+- 이를 해결하려면 **다층 퍼셉트론(MLP)**이나 비선형 변환이 필요하다.
 
 ---
 
