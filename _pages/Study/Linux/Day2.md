@@ -103,7 +103,7 @@ pip install -U pip                 # pip 최신 버전으로 업그레이드
 # 👨‍💻 실습
 ---
 
-### 💡 이미지 Read / Write / Display
+### 💡 Code : 이미지 Read / Write / Display
 
 ```py
 # ex1.py
@@ -146,7 +146,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 RGB/HSV Color Space (색 공간)
+### 💡 Code : RGB/HSV Color Space (색 공간)
 
 ```py
 # ex2.py
@@ -188,7 +188,7 @@ cv2.imshow("Split HSV", hsv_split)
 
 ---
 
-### 💡 Crop / Resize (자르기 / 크기 조정)
+### 💡 Code : Crop / Resize (자르기 / 크기 조정)
 
 ```py
 # ex3.py
@@ -234,7 +234,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 역상 (Reverse Image)
+### 💡 Code : 역상 (Reverse Image)
 
 ```py
 # ex4.py
@@ -262,7 +262,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 이진화 (Binary)
+### 💡 Code : 이진화 (Binary)
 
 ```py
 # ex5.py
@@ -291,7 +291,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 흐림효과 (Blur)
+### 💡 Code : 림효과 (Blur)
 
 ```py
 # ex6.py
@@ -320,7 +320,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 가장자리 검출 (Edge)
+### 💡 Code : 가장자리 검출 (Edge)
 
 ```py
 # ex7.py
@@ -351,7 +351,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 배열 병합 (add Weighted)
+### 💡 Code : 배열 병합 (add Weighted)
 
 ```py
 # ex8.py
@@ -414,7 +414,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 채널 분리 및 병합
+### 💡 Code : 채널 분리 및 병합
 
 ```py
 # ex9.py
@@ -467,7 +467,7 @@ bgz = cv2.merge((b, g, zero))
 
 ---
 
-### 💡 기동영상 파일을 읽고 보여주기
+### 💡 Code : 동영상 파일을 읽고 보여주기
 
 ```py
 # ex10.py
@@ -524,7 +524,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 카메라로부터 input 을 받아 보여주고 동영상 파일로 저장하기
+### 💡 Code : 카메라로부터 input 을 받아 보여주고 동영상 파일로 저장하기
 
 ```py
 # ex11.py
@@ -573,7 +573,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 Text / Line / Ractangle
+### 💡 Code : Text / Line / Ractangle
 
 ```py
 # ex12.py
@@ -642,7 +642,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 Trackbar
+### 💡 Code : Trackbar
 
 ```py
 # ex13.py
