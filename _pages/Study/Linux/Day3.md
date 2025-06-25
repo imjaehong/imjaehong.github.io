@@ -246,8 +246,9 @@ plot_decision_boundary(X_xor, y_xor, ppn_xor, title='XOR Gate Decision Boundary'
 ### ✅ Result: 경계 결정 시각화
 
 ![alt text](<../../../assets/img/Linux/AND 게이트 결정 경계 시각화.png> "AND 게이트 결정 경계 시각화")
-
-![alt text](<../../../assets/img/Linux/OR 게이트 결정 경계 시각화.png> ""OR 게이트 결정 경계 시각화")
+![alt text](<../../../assets/img/Linux/OR 게이트 결정 경계 시각화.png> "OR 게이트 결정 경계 시각화")
+![alt text](<../../../assets/img/Linux/NAND 게이트 결정 경계 시각화.png> "NAND 게이트 결정 경계 시각화")
+![alt text](<../../../assets/img/Linux/XOR 게이트 결정 경계 시각화.png> "XOR 게이트 결정 경계 시각화")
 
 ---
 
