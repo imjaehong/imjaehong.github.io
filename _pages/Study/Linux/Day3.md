@@ -28,12 +28,6 @@ bookmark: true
 
 ---
 
-### 📘 수식 표현
-
-
-
----
-
 ### 🎯 요약
 
 - 퍼셉트론은 **이진 분류 문제**를 해결할 수 있는 가장 기본적인 신경망 구조이다.
@@ -43,57 +37,93 @@ bookmark: true
 # 👨‍💻 실습
 ---
 
-### 💡 Code : AND Gate Perceptron
+### 💡 Code : AND & OR & NAND & XOR Gate Perceptron
 
 ```py
-# AND Gate Perceptron
+# AND & OR & NAND & XOR Gate Perceptron
 import numpy as np
 import matplotlib.pyplot as plt
 
 class Perceptron:
-def __init__(self, input_size, lr=0.1, epochs=10):
-    self.weights = np.zeros(input_size)   # 입력 개수만큼 0으로 초기화된 가중치
-    self.bias = 0                          # 바이어스 초기값 0
-    self.lr = lr                           # 학습률 (learning rate)
-    self.epochs = epochs                   # 학습 반복 횟수
-    self.errors = []                       # epoch별 오류 저장 리스트
+    def __init__(self, input_size, lr=0.1, epochs=10):
+        self.weights = np.zeros(input_size)
+        self.bias = 0
+        self.lr = lr
+        self.epochs = epochs
+        self.errors = []
 
     def activation(self, x):
-    return np.where(x > 0, 1, 0)           # 단위 계단 함수
+        return np.where(x > 0, 1, 0)
 
     def predict(self, x):
-    linear_output = np.dot(x, self.weights) + self.bias  # 선형 조합
-    return self.activation(linear_output)                # 활성화 함수 적용
+        linear_output = np.dot(x, self.weights) + self.bias
+        return self.activation(linear_output)
 
     def train(self, X, y):
-    for epoch in range(self.epochs):
-        total_error = 0
-        for xi, target in zip(X, y):             # 각 데이터 샘플(xi)과 정답(target)
-            prediction = self.predict(xi)        # 예측
-            update = self.lr * (target - prediction)  # 오차만큼 업데이트
-            self.weights += update * xi
-            self.bias += update
-            total_error += int(update != 0.0)     # 업데이트 발생 여부 저장
-        self.errors.append(total_error)
-        print(f"Epoch {epoch+1}/{self.epochs}, Errors: {total_error}")
+        for epoch in range(self.epochs):
+            total_error = 0
+            for xi, target in zip(X, y):
+                prediction = self.predict(xi)
+                update = self.lr * (target - prediction)
+                self.weights += update * xi
+                self.bias += update
+                total_error += int(update != 0.0)
+            self.errors.append(total_error)
+            print(f"Epoch {epoch+1}/{self.epochs}, Errors: {total_error}")
 
-# AND 게이트 데이터
+# AND 게이트 데이터 및 학습
 X_and = np.array([[0,0],[0,1],[1,0],[1,1]])
 y_and = np.array([0,0,0,1])
 
-# 퍼셉트론 모델 훈련
+print(" AND Gate Training")
 ppn_and = Perceptron(input_size=2)
 ppn_and.train(X_and, y_and)
 
-# 예측 결과 확인
-print("\nAND Gate Test:")
+print("\n AND Gate Test:")
 for x in X_and:
     print(f"Input: {x}, Predicted Output: {ppn_and.predict(x)}")
+
+# OR 게이트 데이터 및 학습
+X_or = np.array([[0,0],[0,1],[1,0],[1,1]])
+y_or = np.array([0,1,1,1])
+
+print("\n OR Gate Training")
+ppn_or = Perceptron(input_size=2)
+ppn_or.train(X_or, y_or)
+
+print("\n OR Gate Test:")
+for x in X_or:
+    print(f"Input: {x}, Predicted Output: {ppn_or.predict(x)}")
+
+# NAND 게이트 데이터 및 학습
+X_nand = np.array([[0,0],[0,1],[1,0],[1,1]])
+y_nand = np.array([1,1,1,0])  # AND와 반대
+
+print("\n NAND Gate Training")
+ppn_nand = Perceptron(input_size=2)
+ppn_nand.train(X_nand, y_nand)
+
+print("\n NAND Gate Test:")
+for x in X_nand:
+    print(f"Input: {x}, Predicted Output: {ppn_nand.predict(x)}")
+
+# XOR 게이트 데이터 및 학습
+X_xor = np.array([[0,0],[0,1],[1,0],[1,1]])
+y_xor = np.array([0,1,1,0])  # 선형 분리 불가능
+
+print("\n XOR Gate Training")
+ppn_xor = Perceptron(input_size=2)
+ppn_xor.train(X_xor, y_xor)
+
+print("\n XOR Gate Test:")
+for x in X_xor:
+    print(f"Input: {x}, Predicted Output: {ppn_xor.predict(x)}")
 ```
 
 ### ✅ Result: AND Gate Perceptron
 
 ```
+ AND Gate Training
 Epoch 1/10, Errors: 1
 Epoch 2/10, Errors: 3
 Epoch 3/10, Errors: 3
@@ -105,31 +135,80 @@ Epoch 8/10, Errors: 0
 Epoch 9/10, Errors: 0
 Epoch 10/10, Errors: 0
 
-AND Gate Test:
+ AND Gate Test:
 Input: [0 0], Predicted Output: 0
 Input: [0 1], Predicted Output: 0
 Input: [1 0], Predicted Output: 0
 Input: [1 1], Predicted Output: 1
+
+ OR Gate Training
+Epoch 1/10, Errors: 1
+Epoch 2/10, Errors: 2
+Epoch 3/10, Errors: 1
+Epoch 4/10, Errors: 0
+Epoch 5/10, Errors: 0
+Epoch 6/10, Errors: 0
+Epoch 7/10, Errors: 0
+Epoch 8/10, Errors: 0
+Epoch 9/10, Errors: 0
+Epoch 10/10, Errors: 0
+
+ OR Gate Test:
+Input: [0 0], Predicted Output: 0
+Input: [0 1], Predicted Output: 1
+Input: [1 0], Predicted Output: 1
+Input: [1 1], Predicted Output: 1
+
+ NAND Gate Training
+Epoch 1/10, Errors: 2
+Epoch 2/10, Errors: 3
+Epoch 3/10, Errors: 3
+Epoch 4/10, Errors: 0
+Epoch 5/10, Errors: 0
+Epoch 6/10, Errors: 0
+Epoch 7/10, Errors: 0
+Epoch 8/10, Errors: 0
+Epoch 9/10, Errors: 0
+Epoch 10/10, Errors: 0
+
+ NAND Gate Test:
+Input: [0 0], Predicted Output: 1
+Input: [0 1], Predicted Output: 1
+Input: [1 0], Predicted Output: 1
+Input: [1 1], Predicted Output: 0
+
+ XOR Gate Training
+Epoch 1/10, Errors: 2
+Epoch 2/10, Errors: 3
+Epoch 3/10, Errors: 4
+Epoch 4/10, Errors: 4
+Epoch 5/10, Errors: 4
+Epoch 6/10, Errors: 4
+Epoch 7/10, Errors: 4
+Epoch 8/10, Errors: 4
+Epoch 9/10, Errors: 4
+Epoch 10/10, Errors: 4
+
+ XOR Gate Test:
+Input: [0 0], Predicted Output: 1
+Input: [0 1], Predicted Output: 1
+Input: [1 0], Predicted Output: 0
+Input: [1 1], Predicted Output: 0
 ```
 
-### 💬 Comment: AND Gate Perceptron
-- 퍼셉트론이 어떻게 논리 연산(AND)을 학습하는지 직관적으로 이해할 수 있었다.
-- 초기 가중치가 전부 0인데도 반복 학습을 통해 원하는 출력을 만들어낸다는 점이 흥미로웠다.
-- 출력이 0 또는 1로만 나오는 이유는 활성화 함수가 계단 함수이기 때문임을 알게 되었다.
-- Epoch를 거치면서 오류가 줄어드는 과정을 통해 학습이 잘 진행되고 있음을 확인할 수 있었다.
-- 단층 퍼셉트론이라서 선형 분리 문제(AND)는 잘 해결되지만, XOR처럼 비선형 문제는 학습이 안될 것 같다는 의문이 생겼다.
 
----
 
-### 💡 Code : 경계 결정 시각화
+### 💡 Code : # 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
 
 ```py
-# 경계 결정 시각화
+# 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
 from matplotlib.colors import ListedColormap
+import matplotlib.pyplot as plt
+import numpy as np
 
-def plot_decision_boundary(X, y, model):
-    cmap_light = ListedColormap(['#FFAAAA', '#AAAAFF'])
-    cmap_bold = ListedColormap(['#FF0000', '#0000FF'])
+def plot_decision_boundary(X, y, model, title='Perceptron Decision Boundary'):
+    cmap_light = ListedColormap(['#FFDDDD', '#DDDDFF'])  # 배경 색상
+    cmap_bold = ListedColormap(['#FF0000', '#0000FF'])   # 점 색상
 
     h = .02  # mesh grid 간격
 
@@ -141,36 +220,50 @@ def plot_decision_boundary(X, y, model):
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
 
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(6, 5))
     plt.contourf(xx, yy, Z, cmap=cmap_light)
-
-    # 실제 데이터 포인트 표시
     plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold,
                 edgecolor='k', s=100, marker='o')
     plt.xlabel('Input 1')
     plt.ylabel('Input 2')
-    plt.title('Perceptron Decision Boundary')
+    plt.title(title)
+    plt.grid(True)
     plt.show()
 
 # AND 게이트 결정 경계 시각화
-plot_decision_boundary(X_and, y_and, ppn_and)
+plot_decision_boundary(X_and, y_and, ppn_and, title='AND Gate Decision Boundary')
+
+# OR 게이트 결정 경계 시각화
+plot_decision_boundary(X_or, y_or, ppn_or, title='OR Gate Decision Boundary')
+
+# NAND 게이트 결정 경계 시각화
+plot_decision_boundary(X_nand, y_nand, ppn_nand, title='NAND Gate Decision Boundary')
+
+# XOR 게이트 결정 경계 시각화
+plot_decision_boundary(X_xor, y_xor, ppn_xor, title='XOR Gate Decision Boundary')
 ```
 
 ### ✅ Result: 경계 결정 시각화
 
-![alt text](<../../../assets/img/Linux/경계 결정 시각화.png> "경계 결정 시각화")
+![alt text](<../../../assets/img/Linux/AND 게이트 결정 경계 시각화.png> "AND 게이트 결정 경계 시각화")
+
+![alt text](<../../../assets/img/Linux/OR 게이트 결정 경계 시각화.png> ""OR 게이트 결정 경계 시각화")
 
 ---
 
-### 💡 Code : 오류 시각화
+### 💡 Code : # 오류 시각화 (AND, OR, NAND, XOR)
 
 ```py
-# 오류 시각화
+# 오류 시각화 (AND, OR, NAND, XOR)
 plt.figure(figsize=(8, 5))
-plt.plot(range(1, len(ppn_and.errors) + 1), ppn_and.errors, marker='o')
+plt.plot(range(1, len(ppn_and.errors) + 1), ppn_and.errors, marker='o', label='AND Gate')
+plt.plot(range(1, len(ppn_or.errors) + 1), ppn_or.errors, marker='s', label='OR Gate')
+plt.plot(range(1, len(ppn_nand.errors) + 1), ppn_nand.errors, marker='^', label='NAND Gate')
+plt.plot(range(1, len(ppn_xor.errors) + 1), ppn_xor.errors, marker='x', label='XOR Gate')
 plt.xlabel('Epochs')
 plt.ylabel('Number of Errors')
-plt.title('Perceptron Learning Error Over Epochs (AND Gate)')
+plt.title('Perceptron Learning Error Over Epochs')
+plt.legend()
 plt.grid(True)
 plt.show()
 ```
@@ -178,6 +271,9 @@ plt.show()
 ### ✅ Result: 오류 시각화
 
 ![alt text](<../../../assets/img/Linux/오류 시각화.png> "오류 시각화")
+
+### 💬 Comment: AND Gate Perceptron
+- 퍼셉트론이 어떻게 논리 연산(AND)을 학습하는지 직관적으로 이해할 수 있었다.
 
 ---
 
