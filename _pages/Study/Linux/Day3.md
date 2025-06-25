@@ -8,102 +8,42 @@ thumbnail: "/assets/img/thumbnail/Linux_logo.png"
 bookmark: true
 ---
 
-# 👨‍💻 실습
+# 📌 Perceptron란?
+---
+퍼셉트론(Perceptron)은 생물학적 뉴런을 수학적으로 모델링한 **인공 뉴런 모델**로, 여러 입력 신호를 받아 각 입력에 대한 **가중치(Weight)**를 곱한 후, 이들의 **가중합(Weighted Sum)**을 계산하고, **활성화 함수(Activation Function)**를 통해 최종 출력을 결정하는 구조이다.
+
 ---
 
+### 🔧 구조 (Perceptron Structure)
 
-
----
-
-###### ggggggggg
-# 📌 OpenCV란?
----
-OpenCV(Open Source Computer Vision Library)는 **실시간 컴퓨터 비전** 및 **머신러닝**을 위한 오픈소스 라이브러리입니다.  
-다양한 이미지/비디오 처리 기능을 제공하며, Python, C++, Java 등 다양한 언어에서 사용 가능합니다.
-
-# 🚀 CUDA 모듈의 역할
----
-- GPU 가속을 활용한 **고속 이미지 처리** 수행
-- OpenCV의 일부 함수들은 CUDA를 통해 **병렬 처리**되어 성능을 향상시킴
-- 사용 예: `cv2.cuda.GpuMat`, `cv2.cuda.filter2D()`, `cv2.cuda.resize()` 등
-
-# 🛠️ 작업할 디렉토리 생성 및 환경 설정
----
-
-```bash
-# 1. 작업 디렉토리 생성
-mkdir opencv                 # 디렉토리 이름: opencv
-cd opencv                   # 해당 디렉토리로 이동
-
-# 2. 가상 환경 생성 및 활성화
-python3 -m venv .env        # 가상 환경 생성 (폴더 이름: .env)
-source .env/bin/activate    # 가상 환경 활성화
-
-# 3. 패키지 설치
-pip install opencv-python          # OpenCV 기본 기능(core, imgproc 등)
-pip install opencv-contrib-python # 추가 모듈(contrib 포함)
-pip install -U pip                 # pip 최신 버전으로 업그레이드
+```
+입력(x) → 가중치(w) → 가중합(∑) → 활성화 함수(f) → 출력(y)
 ```
 
-# ✅ 설치 확인 (Python 인터프리터 실행)
----
-
-```py
->>> import numpy as np
->>> import cv2
-
->>> np.__version__
-'2.2.6'          # 설치된 NumPy 버전 출력
-
->>> cv2.__version__
-'4.11.0'         # 설치된 OpenCV 버전 출력
-
->>> exit()       # Python 인터프리터 종료
-```
-
-# 🎨 색상 정보
----
-
-### 🔗 참고 사이트
-- [W3Schools - RGB Colors](https://www.w3schools.com/colors/colors_rgb.asp)
+- **입력 (Input)**: AND, OR 등 논리 연산을 위한 입력 신호.
+- **가중치 (Weight)**: 입력 신호의 중요도를 결정하며, 학습을 통해 조정됨.
+- **가중합 (Weighted Sum)**: 각 입력과 그에 대응하는 가중치의 곱을 모두 더한 값.
+- **활성화 함수 (Activation Function)**: 가중합이 임계값을 넘으면 1, 넘지 못하면 0을 출력하는 함수. 대표적으로 단위 계단 함수 사용.
+- **출력 (Output)**: 최종 결과값 (보통 0 또는 1의 이진 출력).
 
 ---
 
-### 🌈 RGB (Red, Green, Blue)
-- 각 색상 채널: **0~255 (8bit)**
-  - R (Red): 8bit
-  - G (Green): 8bit
-  - B (Blue): 8bit
-- 픽셀 1개 = **24bit (8bit × 3)**
+### 📘 수식 표현
+
+\[
+y = f\left( \sum_{i=0}^{m} w_i x_i \right)
+\]
+
+- 여기서 \( x_0 = 1 \) (바이어스), \( w_0 \)는 바이어스 항에 대한 가중치  
+- \( f(z) = \begin{cases}
+1 & \text{if } z \geq 0 \\
+0 & \text{if } z < 0
+\end{cases} \)
 
 ---
 
-### 🎨 HSL (Hue, Saturation, Lightness)
-- **H**: 색상 (Hue) → 0 ~ 360°
-- **S**: 채도 (Saturation) → 0 ~ 100%
-- **L**: 밝기 (Lightness) → 0 ~ 100%
+### ✅ 요약
 
----
-
-### 🔄 RGB vs HSL 차이점
-
-| 항목 | RGB | HSL |
-| :--: | :--: | :--: |
-| 구성 | Red, Green, Blue (각 0~255) | Hue (0~360), Saturation & Lightness (0~100%) |
-| 직관성 | 컴퓨터에서 사용하기 적합 | 사람이 색을 이해하기 쉬움 |
-| 색 조절 | 색상 조정이 복잡함 | 채도/밝기 조절이 용이함 |
-| 용도 | 디스플레이, 이미지 처리 등 | 디자인, 색상 선택 도구 등에 유용 |
-
----
-
-### ✅ **요약**:  
-- RGB는 화면 출력/처리에 적합한 **디지털 색 표현 방식**  
-- HSL은 색상 구성요소를 분리해 **사람이 이해하거나 조절하기 쉬운 방식**
-
----
-
-### 📝 메모
-- vi ex1.py : python 스크립트 생성
-- python ex1.py : 생성된 스크립트 실행
-- jpg : 파일이 작고 속도가 빠르며, 주로 사진이나 웹 배경 이미지에 사용
-- png : 화질 보존, 투명 배경이 필요한 경우 사용
+- 퍼셉트론은 **이진 분류 문제**를 해결할 수 있는 가장 기본적인 신경망 구조이다.
+- 학습을 통해 입력 신호의 중요도를 나타내는 **가중치**가 조정된다.
+- 단층 퍼셉트론은 **선형 분리 가능한 문제**만 해결할 수 있다.
