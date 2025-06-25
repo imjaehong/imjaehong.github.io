@@ -580,7 +580,7 @@ cv2.destroyAllWindows()
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture(5)
+cap = cv2.VideoCapture(0)
 
 # 동그라미를 그릴 좌표를 저장할 리스트
 circle_centers = []
@@ -593,8 +593,8 @@ def draw_circle(event, x, y, flags, param):
 cv2.namedWindow("Camera")
 cv2.setMouseCallback("Camera", draw_circle)
 
-topLeft = (50, 50)
-bottomRight = (300, 300)
+topLeft = (50+100, 50)
+bottomRight = (300+100, 300)
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -602,16 +602,19 @@ while cap.isOpened():
         break
 
     # Line
-    cv2.line(frame, topLeft, bottomRight, (0, 255, 0), 3)
+    cv2.line(frame,
+         (topLeft[0] + 80, topLeft[1]),
+         (bottomRight[0] + 80, bottomRight[1]),
+         (0, 255, 0), 3)
 
     # Rectangle
     cv2.rectangle(frame,
-                  [pt+30 for pt in topLeft], [pt-30 for pt in bottomRight], (255, 0, 255), 3)
+                  [pt+80 for pt in topLeft], [pt+50 for pt in bottomRight], (255, 0, 255), 3)
 
     # Text
     font = cv2.FONT_ITALIC
-    cv2.putText(frame, 'me',
-                [pt+40 for pt in bottomRight], font, 2, (255, 0, 255), 5)
+    cv2.putText(frame, 'hhhong',
+                [pt-180 for pt in bottomRight], font, 2, (0, 255, 255), 5)
 
     # 저장된 좌표에 동그라미 그리기
     for center in circle_centers:
