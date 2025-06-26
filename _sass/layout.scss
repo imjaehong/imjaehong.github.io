@@ -31,10 +31,11 @@
     font-family: Cambria, sans-serif;
     background: linear-gradient(90deg, #ff9de2, #b28bff);
     background-clip: text;
-    -webkit-background-clip: text;     /* for Safari/Chrome */
-    color: transparent;
+    -webkit-background-clip: text;
+    color: transparent !important;
     -webkit-text-fill-color: transparent;
   }
+
 
 }
 
