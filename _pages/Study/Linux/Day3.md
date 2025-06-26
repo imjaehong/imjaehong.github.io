@@ -120,7 +120,7 @@ for x in X_xor:
     print(f"Input: {x}, Predicted Output: {ppn_xor.predict(x)}")
 ```
 
-### ✅ Result: AND & OR & NAND & XOR Gate Perceptron
+### ✅ Result : AND & OR & NAND & XOR Gate Perceptron
 
 ```
  AND Gate Training
@@ -196,7 +196,9 @@ Input: [1 0], Predicted Output: 0
 Input: [1 1], Predicted Output: 0
 ```
 
-### 💡 Code : # 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
+---
+
+### 💡 Code : 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
 
 ```py
 # 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
@@ -241,7 +243,7 @@ plot_decision_boundary(X_nand, y_nand, ppn_nand, title='NAND Gate Decision Bound
 plot_decision_boundary(X_xor, y_xor, ppn_xor, title='XOR Gate Decision Boundary')
 ```
 
-### ✅ Result: 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
+### ✅ Result : 경계 결정 시각화 함수 (AND, OR, NAND, XOR)
 
 ![alt text](<../../../assets/img/Linux/AND 게이트 결정 경계 시각화.png> "AND 게이트 결정 경계 시각화")
 ![alt text](<../../../assets/img/Linux/OR 게이트 결정 경계 시각화.png> "OR 게이트 결정 경계 시각화")
@@ -267,7 +269,7 @@ plt.grid(True)
 plt.show()
 ```
 
-### ✅ Result: 오류 시각화 (AND, OR, NAND, XOR)
+### ✅ Result : 오류 시각화 (AND, OR, NAND, XOR)
 
 ![alt text](<../../../assets/img/Linux/오류 시각화.png> "오류 시각화")
 
@@ -276,5 +278,140 @@ plt.show()
 - XOR은 선형 분리 불가능한 문제이기 때문에
 단층 퍼셉트론으로는 해결할 수 없다.
 - 이를 해결하려면 **다층 퍼셉트론(MLP)**이나 비선형 변환이 필요하다.
+
 ---
+
+### 💡 Code : MLP로 XOR 문제 해결
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+
+class MultiLayerPerceptron:
+    def __init__(self, input_size=2, hidden_size=4, output_size=1, lr=0.5, epochs=1000):
+        self.W1 = np.random.uniform(-1, 1, (input_size, hidden_size))
+        self.b1 = np.zeros((1, hidden_size))
+        self.W2 = np.random.uniform(-1, 1, (hidden_size, output_size))
+        self.b2 = np.zeros((1, output_size))
+        self.lr = lr
+        self.epochs = epochs
+        self.losses = []
+
+    def sigmoid(self, x):
+        return 1 / (1 + np.exp(-np.clip(x, -250, 250)))
+
+    def sigmoid_derivative(self, x):
+        return x * (1 - x)
+
+    def forward(self, X):
+        self.z1 = np.dot(X, self.W1) + self.b1
+        self.a1 = self.sigmoid(self.z1)
+        self.z2 = np.dot(self.a1, self.W2) + self.b2
+        self.a2 = self.sigmoid(self.z2)
+        return self.a2
+
+    def backward(self, X, y, output):
+        m = X.shape[0]
+        dZ2 = output - y
+        dW2 = (1 / m) * np.dot(self.a1.T, dZ2)
+        db2 = (1 / m) * np.sum(dZ2, axis=0, keepdims=True)
+        dZ1 = np.dot(dZ2, self.W2.T) * self.sigmoid_derivative(self.a1)
+        dW1 = (1 / m) * np.dot(X.T, dZ1)
+        db1 = (1 / m) * np.sum(dZ1, axis=0, keepdims=True)
+
+        self.W2 -= self.lr * dW2
+        self.b2 -= self.lr * db2
+        self.W1 -= self.lr * dW1
+        self.b1 -= self.lr * db1
+
+    def train(self, X, y):
+        for epoch in range(self.epochs):
+            output = self.forward(X)
+            loss = np.mean((output - y) ** 2)
+            self.losses.append(loss)
+            self.backward(X, y, output)
+            #if epoch % 200 == 0:
+            #    print(f"Epoch {epoch}/{self.epochs}, Loss: {loss:.6f}")
+
+    def predict(self, X):
+        output = self.forward(X)
+        return (output > 0.5).astype(int)
+
+    def predict_prob(self, X):
+        return self.forward(X).ravel()  # 결정 경계용
+
+
+# === XOR 데이터 ===
+X_xor = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y_xor = np.array([[0], [1], [1], [0]])
+
+# === 학습 ===
+print("\n=== XOR Gate Multi-Layer Perceptron Training ===")
+mlp = MultiLayerPerceptron(input_size=2, hidden_size=2, lr=0.5, epochs=10000)
+mlp.train(X_xor, y_xor)
+
+# === 예측 결과 출력 ===
+print("\nXOR GATE Test (Multi-Layer Perceptron):")
+xor_predictions = mlp.predict(X_xor)
+for i, x in enumerate(X_xor):
+    predicted = xor_predictions[i][0]
+    actual = y_xor[i][0]
+    result = "✓" if predicted == actual else "✗"
+    print(f"Input: {x}, Predicted: {predicted}, Actual: {actual}, {result}")
+
+
+# === 결정 경계 시각화 함수 ===
+def plot_decision_boundary(X, y, model, title="Decision Boundary"):
+    cmap_light = ListedColormap(['#FFDDDD', '#DDDDFF'])
+    cmap_bold = ListedColormap(['#FF0000', '#0000FF'])
+
+    h = .01
+    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                         np.arange(y_min, y_max, h))
+
+    grid = np.c_[xx.ravel(), yy.ravel()]
+    Z = model.predict_prob(grid)
+    Z = Z.reshape(xx.shape)
+
+    plt.figure(figsize=(6, 5))
+    plt.contourf(xx, yy, Z > 0.5, cmap=cmap_light)
+    plt.scatter(X[:, 0], X[:, 1], c=y.ravel(), cmap=cmap_bold,
+                edgecolor='k', s=120)
+    plt.title(title)
+    plt.xlabel("Input 1")
+    plt.ylabel("Input 2")
+    plt.grid(True)
+    plt.show()
+
+
+# === 결정 경계 시각화 ===
+plot_decision_boundary(X_xor, y_xor, mlp, title="XOR MLP Decision Boundary")
+
+# === 손실 곡선 시각화 ===
+plt.figure(figsize=(8, 5))
+plt.plot(range(mlp.epochs), mlp.losses, color='purple')
+plt.title("MLP Training Loss on XOR Problem")
+plt.xlabel("Epochs")
+plt.ylabel("Mean Squared Error")
+plt.grid(True)
+plt.show()
+```
+
+### ✅ Result : MLP로 XOR 문제 해결
+
+```
+=== XOR Gate Multi-Layer Perceptron Training ===
+
+XOR GATE Test (Multi-Layer Perceptron):
+Input: [0 0], Predicted: 0, Actual: 0, ✓
+Input: [0 1], Predicted: 1, Actual: 1, ✓
+Input: [1 0], Predicted: 1, Actual: 1, ✓
+Input: [1 1], Predicted: 0, Actual: 0, ✓
+```
+
+![alt text](<../../../assets/img/Linux/XOR_MLP 게이트 결정 경계 시각화.png> "XOR_MLP 게이트 결정 경계 시각화")
+![alt text](<../../../assets/img/Linux/XOR_MLP 오류 시각화.png> "XOR_MLP 오류 시각화")
 

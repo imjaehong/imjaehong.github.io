@@ -291,7 +291,7 @@ cv2.destroyAllWindows()
 
 ---
 
-### 💡 Code : 림효과 (Blur)
+### 💡 Code : 흐림효과 (Blur)
 
 ```py
 # ex6.py
