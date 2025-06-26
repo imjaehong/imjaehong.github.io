@@ -414,4 +414,3 @@ Input: [1 1], Predicted: 0, Actual: 0, ✓
 
 ![alt text](<../../../assets/img/Linux/XOR_MLP 게이트 결정 경계 시각화.png> "XOR_MLP 게이트 결정 경계 시각화")
 ![alt text](<../../../assets/img/Linux/XOR_MLP 오류 시각화.png> "XOR_MLP 오류 시각화")
-
