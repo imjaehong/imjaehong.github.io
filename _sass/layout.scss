@@ -25,18 +25,22 @@
   z-index:999;
   text-align:center;
 
-  .loading_box p {
-    font-size: 2.5rem;
-    font-weight: 600;
-    font-family: Cambria, sans-serif;
-    background: linear-gradient(90deg, #ff9de2, #b28bff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent !important;
-    -webkit-text-fill-color: transparent;
+  .loading_box {
+    margin:auto;
+
+    img {
+      width:128px;
+      height:128px;
+    }
+
+    p {
+      margin:2rem;
+      font-size:2.5rem;
+      color:$color-wenge;
+      font-weight:600;
+      font-family:Cambria, sans-serif;
+    }
   }
-
-
 }
 
 #stars {
