@@ -8,8 +8,24 @@ thumbnail: "/assets/img/thumbnail/Linux_logo.png"
 bookmark: true
 ---
 
+# 📌 Deep Learning란?
+---
+퍼셉트론(Perceptron)은 생물학적 뉴런을 수학적으로 모델링한 **인공 뉴런 모델**로,...
+
+---
+
+### 🔧 구조 (Perceptron Structure)
+
+```
+입력(x) → 가중치(w) → 가중합(∑) → 활성화 함수(f) → 출력(y)
+```
 
 
+
+
+
+
+---
 
 # 🛠️ 작업할 디렉토리 생성 및 환경 설정
 ---
@@ -32,7 +48,6 @@ pip install scikit_learn       # scikit-learn (머신러닝 및 평가 도구)
 
 # 4. Qt GUI 백엔드 설정 (Wayland 환경에서 필수)
 export QT_QPA_PLATFORM=wayland # Qt GUI를 Wayland에서 정상 동작하게 설정
-
 ```
 
 # 👨‍💻 실습
