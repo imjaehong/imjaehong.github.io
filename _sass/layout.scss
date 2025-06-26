@@ -34,14 +34,11 @@
     }
 
     p {
-    
-    font-weight: 600;
-    font-family: Cambria, sans-serif;
-    background: linear-gradient(90deg, #ff9de2, #b28bff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent !important;
-    -webkit-text-fill-color: transparent;
+      margin:2rem;
+      font-size:2.5rem;
+      color:$color-wenge;
+      font-weight:600;
+      font-family:Cambria, sans-serif;
     }
   }
 }
