@@ -8,7 +8,7 @@ svg { fill:#aaa; }
 
 #stars, #loading { background:#1E1E1F; }
 
-#loading p { color:#FFB6C1; }
+#loading p { color:cadetblue; }
 
 .sidebar-left { background-color:#313132; }
 
@@ -170,7 +170,7 @@ main {
 
 .toc-header { color:darkgoldenrod; }
 
-@include mq(알약){
+@include mq(tablet){
 
 #article_content .box_contents { background-color:rgba(70, 70, 70, 0.95); }
 
