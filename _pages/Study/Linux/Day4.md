@@ -178,3 +178,5 @@ from sklearn.metrics import accuracy_score
 print('accuracy score : ', accuracy_score(tf.math.argmax(predictions, -1), test_labels))
 ```
 
+asdadasdd
+
