@@ -1,5 +1,5 @@
 ---
-title: "Day4 : Deep Learning"
+title: "Day5 : ??"
 tags:
     - Study
     - Language
@@ -16,6 +16,7 @@ bookmark: true
 ---
 
 ### 🔍 인공신경망(ANN)의 개념
+
 - **생물학적 뉴런 구조**에서 착안.
 - 입력 → 가중치 → 활성화 함수 → 출력 흐름으로 동작.
 - 각 신호의 강도는 **가중치(Weight)**로 표현됨.
