@@ -11,7 +11,6 @@ bookmark: true
 # 📌 CNN란?
 ---
 ??
-
 ---
 
 ### <합성곱 층 - Convolution Layer>
@@ -177,8 +176,6 @@ m0 = ConvDraw(nimg31, filters, (12, 10), 0)
 ![alt text](../../../assets/img/Linux/CNN_Layer.png)
 
 ---
-
-
 
 # 라베파실습
 ---
