@@ -10,33 +10,62 @@ bookmark: true
 
 # 📌 CNN란?
 ---
-??
+CNN(Convolutional Neural Network)은 이미지 인식과 분류에 특화된 인공신경망으로, 사람의 시각 처리 방식과 유사하게 **국소적인 영역을 중심으로 특징(feature)**을 추출하고 학습한다. 기존의 MLP보다 이미지 구조를 더 잘 반영하며, 컴퓨터 비전(CV) 분야에서 널리 사용된다.
+
 ---
 
 ### <합성곱 층 - Convolution Layer>
-- 적절한 크기의 kernel size를 찾는 게 중요함
-- 보통 3x3 kernel 사용 → 작을수록 많은 feature map을 쌓는 경향 있음
-- 보폭 stride가 1일 경우 한 칸씩 합성곱 연산 수행
-- 즉, kernel 크기가 같아도 보폭 stride에 따라 feature map 크기는 달라짐
-- 합성곱 층은 활성화 함수(ReLU)로 비선형성을 도입하여 복잡한 패턴 학습 가능
+- 입력 이미지에 필터(커널)를 적용해 **특징 맵(Feature Map)** 생성
+- 보통 3×3 크기의 필터 사용 (VGGNet 등) → 작을수록 다양한 feature 추출 가능
+- 필터의 두께는 입력 데이터(예: RGB → 3)에 자동 맞춰짐
+- **Stride**: 필터 이동 간격, 작을수록 정밀하고 클수록 빠르게 처리됨
+- **Padding**: 출력 feature map 크기를 유지하려면 padding=same 설정
+- 합성곱 연산 뒤에는 **활성화 함수(ReLU)**를 적용해 비선형성 도입
+
+---
 
 ### <풀링 층 - Pooling Layer>
-- feature map의 공간적 크기를 줄임
-- 최대풀링층: 풀링 윈도우 내 최대값 리턴
-- 평균풀링층: 풀링 윈도우 내 평균값 리턴
-- 공간 정보를 요약하여 계산 비용을 줄이고 주요 특징을 보존
+- **MaxPooling**: 풀링 영역의 최대값 → 주요 특징만 강조
+- **AveragePooling**: 영역 내 평균값 사용
+- **GlobalAveragePooling**: Flatten 없이 전체 평균만 뽑아내는 방식 (GoogLeNet)
+- 연산량 감소 + 과적합 방지 + 공간 구조 요약
+
+---
 
 ### <밀집층 - Fully Connected Layer>
-- 가장 마지막에 flatten 층을 배치하여 지역적 특징(local feature map)을 1차원 벡터로 변환
-- 변환된 feature vector를 fully_connected layer에 입력하여 최종 출력값 계산
+- Flatten 레이어로 feature map을 1차원 벡터로 변환
+- 이후 Fully Connected Layer를 거쳐 **클래스별 출력값** 생성
+- 주로 softmax를 출력층 활성화 함수로 사용해 확률값 도출
 
-### example flow
-- 최종 출력값이 (0.7, 0)인 경우 → 정답이 (1, 0)이라면 0.3 오차 존재 이 오차를 줄이기 위해 kernel들의 가중치를 점진적으로 조정 가중치 변화 
-- 알고리즘: 역전파(backpropagation), 경사하강법(gradient descent) 사용
+---
 
-### CNN 모델과 인간의 시각정보 처리과정의 유사점
-- 인간의 시각 시스템도 시각 피질을 거치며 상위 영역으로 올라갈수록 feature 복잡도가 증가함
-- CNN의 합성곱 층이 깊어질수록 더 복잡한 feature를 처리하는 구조와 유사
+### 🧮 example flow
+- 예: 최종 출력값이 (0.7, 0)이고 정답이 (1, 0)인 경우 → 0.3 오차
+- 이 오차를 **역전파(backpropagation)**로 전파하며 가중치 업데이트
+- **경사하강법(gradient descent)** 등 최적화 알고리즘 사용
+
+---
+
+### 👁️ CNN 모델과 인간 시각 처리의 유사성
+- 인간의 시각 피질도 **단순한 시각 정보 → 복잡한 특징** 순으로 처리
+- CNN도 층이 깊어질수록 복잡한 feature를 추출
+- 저차원 edge → 고차원 패턴 추출 흐름이 시각 정보 처리와 닮음
+
+---
+
+### 🧠 대표 CNN 구조들
+- **AlexNet (2012)**: CNN을 유명하게 만든 최초의 구조, 8층 구성
+- **VGGNet (2014)**: 3×3 필터 반복 사용, 구조 단순 & 효과적
+- **GoogLeNet**: Inception 구조 + Global Average Pooling 사용
+- **ResNet**: Residual Block 사용 → 층이 깊어져도 성능 유지
+
+---
+
+### 🔁 전이학습 (Transfer Learning)
+- 기존 사전학습된 모델의 **가중치를 재사용**하여 적은 데이터로도 학습 가능
+- **Feature Extraction**: 기존 구조 유지, 출력층만 새로 학습
+- **Fine-Tuning**: 일부 층은 고정, 나머지는 재학습
+- 적은 데이터 상황에서 강력한 성능 발휘 가능
 
 ---
 
@@ -177,111 +206,15 @@ m0 = ConvDraw(nimg31, filters, (12, 10), 0)
 
 ---
 
-# 라베파실습
+# 🍓 라즈베리파이 실습
 ---
-sudo apt install rpi-imager : 라즈베리파이 이미지 다운
-rpi-imager : 라즈베리파이 이미지 실행
-운영체제 : RASPBERRY PI OS (64-BIT)
-저장소 : Mass Storage Device - 62.5 GB
+
+### ✅ 설치 및 이미지 설정
+- `sudo apt install rpi-imager` : 라즈베리파이 이미지 도구 설치
+- `rpi-imager` : GUI 실행 후 OS 이미지 다운로드 및 설치 가능
+
+### ⚙️ 설정 정보
+- **운영체제**: Raspberry Pi OS (64-bit)
+- **저장소**: Mass Storage Device - 62.5 GB
 
 
-
-
-```py
-import matplotlib.pyplot as plt
-from tensorflow.keras.datasets import cifar10
-
-(train_x, train_y), (test_x, test_y) = cifar10.load_data()
-
-class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
-
-train_x = train_x / 255.
-test_x = test_x / 255.
-
-from tensorflow.keras.utils import to_categorical
-
-train_y = to_categorical(train_y)
-test_y = to_categorical(test_y)
-
-# CNN 모델 디자인
-from tensorflow.keras import models, layers
-
-model = models.Sequential()
-
-# (32, 32, 3) => (30, 30, 32)
-model.add(layers.Conv2D(filters=32, kernel_size=(3, 3),
-                        activation='relu',
-                        input_shape=(32, 32, 3)))
-# (30, 30, 32) => (15, 15, 32)
-model.add(layers.MaxPool2D(pool_size=(2, 2)))
-
-# (15, 15, 32) => (13, 13, 64)
-model.add(layers.Conv2D(filters=64, kernel_size=(3, 3),
-                        activation='relu'))
-
-# (13, 13, 64) => (6, 6, 64)
-model.add(layers.MaxPool2D(pool_size=(2, 2)))
-
-# (6, 6, 64) => (4, 4, 64)
-model.add(layers.Conv2D(filters=64, kernel_size=(3, 3),
-                        activation='relu'))
-
-# 3D를 1D로 변환
-model.add(layers.Flatten())
-
-# Classification : Fully Connected Layer 추가
-model.add(layers.Dense(units=64, activation='relu'))
-model.add(layers.Dense(units=10, activation='softmax'))
-
-# 모델의 학습 정보 설정
-model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
-
-# 모델 학습
-history = model.fit(x=train_x, y=train_y, epochs=20, batch_size=256, verbose=2, validation_split=0.2)
-
-acc = history.history['accuracy']
-val_acc = history.history['val_accuracy']
-loss = history.history['loss']
-val_loss = history.history['val_loss']
-
-epochs = range(len(acc))
-
-plt.plot(epochs, acc, 'bo', label='Training acc')
-plt.plot(epochs, val_acc, 'b', label='Validation acc')
-plt.title('Training and Validation Accuracy')
-plt.legend()
-plt.show()
-
-plt.plot(epochs, loss, 'bo', label='Training loss')
-plt.plot(epochs, val_loss, 'b', label='Validation loss')
-plt.title('Training and Validation Loss')
-plt.legend()
-plt.show()
-
-plt.figure(figsize=(10, 10))
-for i in range(25):
-    plt.subplot(5, 5, i + 1)
-    plt.xticks([])
-    plt.yticks([])
-    plt.grid(False)
-    plt.imshow(train_x[i], cmap=plt.cm.binary)
-    # The CIFAR labels happen to be arrays,
-    # which is why you need the extra index
-    plt.xlabel(class_names[train_y[i].argmax()])
-plt.show()
-
-print(f'훈련 데이터 수: {len(train_x)}장')
-print(f'테스트 데이터 수: {len(test_x)}장')
-print(f'총 데이터 수: {len(train_x) + len(test_x)}장')
-
-plt.figure(figsize=(15, 15))
-for i in range(100):
-    plt.subplot(10, 10, i + 1)
-    plt.xticks([])
-    plt.yticks([])
-    plt.grid(False)
-    plt.imshow(train_x[i], cmap=plt.cm.binary)
-    plt.xlabel(class_names[train_y[i].argmax()])
-plt.show()
-
-```
