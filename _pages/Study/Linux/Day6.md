@@ -14,33 +14,30 @@ bookmark: true
 
 ---
 
-< 합성곱 층 - Convolution Layer >
+### <합성곱 층 - Convolution Layer>
 - 적절한 크기의 kernel size를 찾는 게 중요함
 - 보통 3x3 kernel 사용 → 작을수록 많은 feature map을 쌓는 경향 있음
 - 보폭 stride가 1일 경우 한 칸씩 합성곱 연산 수행
 - 즉, kernel 크기가 같아도 보폭 stride에 따라 feature map 크기는 달라짐
 - 합성곱 층은 활성화 함수(ReLU)로 비선형성을 도입하여 복잡한 패턴 학습 가능
 
-< 풀링 층 - Pooling Layer >
+### <풀링 층 - Pooling Layer>
 - feature map의 공간적 크기를 줄임
 - 최대풀링층: 풀링 윈도우 내 최대값 리턴
 - 평균풀링층: 풀링 윈도우 내 평균값 리턴
 - 공간 정보를 요약하여 계산 비용을 줄이고 주요 특징을 보존
 
-< 밀집층 - Fully Connected Layer >
+### <밀집층 - Fully Connected Layer>
 - 가장 마지막에 flatten 층을 배치하여 지역적 특징(local feature map)을 1차원 벡터로 변환
 - 변환된 feature vector를 fully_connected layer에 입력하여 최종 출력값 계산
 
-< example flow >
+### example flow
 - 최종 출력값이 (0.7, 0)인 경우 → 정답이 (1, 0)이라면 0.3 오차 존재 이 오차를 줄이기 위해 kernel들의 가중치를 점진적으로 조정 가중치 변화 
 - 알고리즘: 역전파(backpropagation), 경사하강법(gradient descent) 사용
 
-< CNN 모델과 인간의 시각정보 처리과정의 유사점 >
+### CNN 모델과 인간의 시각정보 처리과정의 유사점
 - 인간의 시각 시스템도 시각 피질을 거치며 상위 영역으로 올라갈수록 feature 복잡도가 증가함
 - CNN의 합성곱 층이 깊어질수록 더 복잡한 feature를 처리하는 구조와 유사
-
-
-
 
 ---
 
