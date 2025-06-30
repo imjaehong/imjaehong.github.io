@@ -183,3 +183,105 @@ sudo apt install rpi-imager : 라즈베리파이 이미지 다운
 rpi-imager : 라즈베리파이 이미지 실행
 운영체제 : RASPBERRY PI OS (64-BIT)
 저장소 : Mass Storage Device - 62.5 GB
+
+
+
+
+```py
+import matplotlib.pyplot as plt
+from tensorflow.keras.datasets import cifar10
+
+(train_x, train_y), (test_x, test_y) = cifar10.load_data()
+
+class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+
+train_x = train_x / 255.
+test_x = test_x / 255.
+
+from tensorflow.keras.utils import to_categorical
+
+train_y = to_categorical(train_y)
+test_y = to_categorical(test_y)
+
+# CNN 모델 디자인
+from tensorflow.keras import models, layers
+
+model = models.Sequential()
+
+# (32, 32, 3) => (30, 30, 32)
+model.add(layers.Conv2D(filters=32, kernel_size=(3, 3),
+                        activation='relu',
+                        input_shape=(32, 32, 3)))
+# (30, 30, 32) => (15, 15, 32)
+model.add(layers.MaxPool2D(pool_size=(2, 2)))
+
+# (15, 15, 32) => (13, 13, 64)
+model.add(layers.Conv2D(filters=64, kernel_size=(3, 3),
+                        activation='relu'))
+
+# (13, 13, 64) => (6, 6, 64)
+model.add(layers.MaxPool2D(pool_size=(2, 2)))
+
+# (6, 6, 64) => (4, 4, 64)
+model.add(layers.Conv2D(filters=64, kernel_size=(3, 3),
+                        activation='relu'))
+
+# 3D를 1D로 변환
+model.add(layers.Flatten())
+
+# Classification : Fully Connected Layer 추가
+model.add(layers.Dense(units=64, activation='relu'))
+model.add(layers.Dense(units=10, activation='softmax'))
+
+# 모델의 학습 정보 설정
+model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
+
+# 모델 학습
+history = model.fit(x=train_x, y=train_y, epochs=20, batch_size=256, verbose=2, validation_split=0.2)
+
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(len(acc))
+
+plt.plot(epochs, acc, 'bo', label='Training acc')
+plt.plot(epochs, val_acc, 'b', label='Validation acc')
+plt.title('Training and Validation Accuracy')
+plt.legend()
+plt.show()
+
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and Validation Loss')
+plt.legend()
+plt.show()
+
+plt.figure(figsize=(10, 10))
+for i in range(25):
+    plt.subplot(5, 5, i + 1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
+    plt.imshow(train_x[i], cmap=plt.cm.binary)
+    # The CIFAR labels happen to be arrays,
+    # which is why you need the extra index
+    plt.xlabel(class_names[train_y[i].argmax()])
+plt.show()
+
+print(f'훈련 데이터 수: {len(train_x)}장')
+print(f'테스트 데이터 수: {len(test_x)}장')
+print(f'총 데이터 수: {len(train_x) + len(test_x)}장')
+
+plt.figure(figsize=(15, 15))
+for i in range(100):
+    plt.subplot(10, 10, i + 1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
+    plt.imshow(train_x[i], cmap=plt.cm.binary)
+    plt.xlabel(class_names[train_y[i].argmax()])
+plt.show()
+
+```
