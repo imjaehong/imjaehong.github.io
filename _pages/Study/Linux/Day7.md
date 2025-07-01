@@ -18,9 +18,7 @@ bookmark: true
 5. 데이터 증강 강화
 적용
 
-
 ```py
-# HARIBO_Mini_Project (Google Colab)
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -40,15 +38,15 @@ model_save_path = '/content/drive/MyDrive/haribo_model.h5'
 
 # ✅ 데이터 증강 설정
 datagen = ImageDataGenerator(
-    rescale=1./255,
-    validation_split=0.2,
-    rotation_range=90,
-    width_shift_range=0.1,
-    height_shift_range=0.1,
-    shear_range=0.1,
-    zoom_range=0.1,
-    horizontal_flip=True,
-    fill_mode='nearest'
+    rescale=1./255,              # 픽셀 값을 0~1 범위로 정규화
+    validation_split=0.2,        # 전체 데이터 중 20%를 검증용으로 사용
+    rotation_range=90,           # 최대 ±90도 범위 내에서 무작위 회전
+    width_shift_range=0.1,       # 전체 너비의 10%만큼 좌우 이동
+    height_shift_range=0.1,      # 전체 높이의 10%만큼 상하 이동
+    shear_range=0.1,             # 전단 변환 (이미지를 기울이는 효과)
+    zoom_range=0.1,              # 10% 범위 내 무작위 확대/축소
+    horizontal_flip=True,        # 이미지를 좌우로 무작위 반전
+    fill_mode='nearest'          # 변환 후 생긴 빈 영역을 가장 가까운 픽셀로 채움
 )
 
 # ✅ 데이터 로딩
@@ -138,10 +136,10 @@ plt.show()
 model.save(model_save_path)
 print(f"모델이 저장되었습니다: {model_save_path}")
 ```
-![alt text](../../../assets/img/Linux/result.png)
 
-Epoch 32/50
-13/13 - 5s - 394ms/step - accuracy: 0.9315 - loss: 0.2170 - val_accuracy: 0.8041 - val_loss: 0.4033
+![alt text](../../../assets/img/Linux/epoch32.png)
+
+
 
 ![alt text](<../../../assets/img/Linux/validation accuracy.png>)
 ![alt text](<../../../assets/img/Linux/validation loss.png>)
