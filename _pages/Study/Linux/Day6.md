@@ -10,6 +10,7 @@ bookmark: true
 
 # 📌 CNN란?
 ---
+
 CNN(Convolutional Neural Network)은 이미지 인식과 분류에 특화된 인공신경망으로, 사람의 시각 처리 방식과 유사하게 **국소적인 영역을 중심으로 특징(feature)**을 추출하고 학습한다. 기존의 MLP보다 이미지 구조를 더 잘 반영하며, 컴퓨터 비전(CV) 분야에서 널리 사용된다.
 
 ---
