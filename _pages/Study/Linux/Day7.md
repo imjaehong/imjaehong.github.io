@@ -8,6 +8,17 @@ thumbnail: "/assets/img/thumbnail/Linux_logo.png"
 bookmark: true
 ---
 
+# 구글 코랩에서 코드 작성
+
+기존 모델에서
+1. 데이터 증강 적용
+2. 전이학습 (Transfer Learning) 도입
+3. 모델 개선 (Dropout 추가 / 레이어 확장)
+4. EarlyStopping, ModelCheckpoint 적용
+5. 데이터 증강 강화
+적용
+
+
 ```py
 # HARIBO_Mini_Project (Google Colab)
 import matplotlib.pyplot as plt
@@ -127,6 +138,7 @@ plt.show()
 model.save(model_save_path)
 print(f"모델이 저장되었습니다: {model_save_path}")
 ```
+![alt text](../../../assets/img/Linux/result.png)
 
 Epoch 32/50
 13/13 - 5s - 394ms/step - accuracy: 0.9315 - loss: 0.2170 - val_accuracy: 0.8041 - val_loss: 0.4033
@@ -134,6 +146,38 @@ Epoch 32/50
 ![alt text](<../../../assets/img/Linux/validation accuracy.png>)
 ![alt text](<../../../assets/img/Linux/validation loss.png>)
 ![alt text](<../../../assets/img/Linux/image ex.png>)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # 결과
