@@ -1,5 +1,5 @@
 ---
-title: "Day7 : ㅡ"
+title: "Day7 : HARIBO_Mini_Project"
 tags:
     - Study
     - Language
