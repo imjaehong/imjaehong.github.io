@@ -114,3 +114,84 @@ import numpy as np
 import pandas as pd
 ```
 
+```py
+# 2 데이터셋 불러오기
+from tensorflow.keras.datasets.mnist import load_data
+(train_x, train_y), (test_x, test_y) = load_data()
+```
+
+```py
+# 2-1 데이터 확인하기
+train_x.shape, train_y.shape   # train 데이터 크기 확인
+test_x.shape, test_y.shape     # test 데이터 크기 확인
+```
+
+```
+((10000, 28, 28), (10000,))
+```
+
+```py
+# 2-2 이미지 확인하기
+from PIL import Image
+img = train_x[0]
+
+import matplotlib.pyplot as plt
+img1 = Image.fromarray(img, mode='L')
+plt.imshow(img1)
+
+train_y[0]   # 첫번째 데이터 확인
+```
+
+```
+np.uint8(5)
+```
+
+![alt text](../../../assets/img/Linux/27-1.png)
+
+```py
+# 3 데이터 전처리
+
+# 3-1 입력 형태 변환: 3차원 → 2차원
+# 데이터를 2차원 형태로 변환: 입력 데이터가 선형모델에서는 벡터 형태
+train_x1 = train_x.reshape(60000, -1)
+test_x1 = test_x.reshape(10000, -1)
+
+# 3-2 데이터 값의 크기 조절: 0~1 사이 값으로 변환
+train_x2 = train_x1 / 255
+test_x2 = test_x1 / 255
+```
+
+```py
+# 4 모델 설정
+
+# 4-1 모델 설정용 라이브러리 불러오기
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# 4-2 모델 설정
+md = Sequential()
+md.add(Dense(10, activation='softmax', input_shape=(28*28,)))
+
+md.summary()   # 모델 요약
+```
+
+```
+/usr/local/lib/python3.11/dist-packages/keras/src/layers/core/dense.py:87: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+
+Model: "sequential_6"
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ dense_6 (Dense)                 │ (None, 10)             │         7,850 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+
+ Total params: 7,850 (30.66 KB)
+
+ Trainable params: 7,850 (30.66 KB)
+
+ Non-trainable params: 0 (0.00 B)
+
+
+```
