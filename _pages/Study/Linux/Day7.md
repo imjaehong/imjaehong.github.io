@@ -185,17 +185,19 @@ source venv/bin/activate
 pip install tensorflow opencv-python-headless numpy
 ```
 
-### 📥 3. Google Drive에서 .h5 파일 다운로드 후 haribo_cam_classifier 디렉토리에 복사
+### 📥 3. 학습한 모델(.h5)을 Google Drive에서 다운로드하여 복사
+
+haribo_model.h5 파일을 Google Drive에서 다운받아 `haribo_cam_classifier` 디렉토리에 위치시킴
 
 ![alt text](../../../assets/img/Linux/h5.png)
 
-### 4. 클래스 이름 파일 생성 (class_names.json)
+### 🧠 4. 클래스 이름 파일 생성 (class_names.json)
 
 ```json
 ["bear", "cola", "egg", "heart", "ring"]
 ```
 
-### 5. 실시간 분류 코드 생성 (predict_cam.py)
+### 💡 5. 실시간 분류 코드 작성 (predict_cam.py)
 
 ```py
 import cv2
@@ -247,22 +249,35 @@ cv2.destroyAllWindows()
 pip install opencv-python
 ```
 
-### 7. 실행?
+### ▶️ 7. 실시간 예측 실행
 
 ```bash
 python3 predict_cam.py
 ```
 
-### 8. 결과
+### 8. ✅ 결과 정리
 
 ![alt text](../../../assets/img/Linux/haribo.jpg)
+
+#### 🧪 예측 예시: heart
+
 ![alt text](../../../assets/img/Linux/heart.png)
 ![alt text](../../../assets/img/Linux/heart_b.png)
+
+#### 🧪 예측 예시: ring
 ![alt text](../../../assets/img/Linux/ring.png)
 ![alt text](../../../assets/img/Linux/ring_b.png)
+
+#### 🧪 예측 예시: cola
 ![alt text](../../../assets/img/Linux/cola.png)
 ![alt text](../../../assets/img/Linux/cola_b.png)
+
+#### 🧪 예측 예시: egg
+
 ![alt text](../../../assets/img/Linux/egg.png)
 ![alt text](../../../assets/img/Linux/egg_b.png)
+
+#### 🧪 예측 예시: bear
+
 ![alt text](../../../assets/img/Linux/bear.png)
 ![alt text](../../../assets/img/Linux/bear_b.png)
