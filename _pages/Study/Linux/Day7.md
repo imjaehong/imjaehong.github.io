@@ -259,25 +259,22 @@ python3 predict_cam.py
 
 ![alt text](../../../assets/img/Linux/haribo.jpg)
 
-#### 🧪 예측 예시: heart
-
+🧪 예측 예시: heart
 ![alt text](../../../assets/img/Linux/heart.png)
 ![alt text](../../../assets/img/Linux/heart_b.png)
 
-#### 🧪 예측 예시: ring
+🧪 예측 예시: ring
 ![alt text](../../../assets/img/Linux/ring.png)
 ![alt text](../../../assets/img/Linux/ring_b.png)
 
-#### 🧪 예측 예시: cola
+🧪 예측 예시: cola
 ![alt text](../../../assets/img/Linux/cola.png)
 ![alt text](../../../assets/img/Linux/cola_b.png)
 
-#### 🧪 예측 예시: egg
-
+🧪 예측 예시: egg
 ![alt text](../../../assets/img/Linux/egg.png)
 ![alt text](../../../assets/img/Linux/egg_b.png)
 
-#### 🧪 예측 예시: bear
-
+🧪 예측 예시: bear
 ![alt text](../../../assets/img/Linux/bear.png)
 ![alt text](../../../assets/img/Linux/bear_b.png)
