@@ -8,15 +8,24 @@ thumbnail: "/assets/img/thumbnail/Linux_logo.png"
 bookmark: true
 ---
 
-# Model Improvement Strategy
+# 🚀 Model Improvement Strategy
 ---
 기존 CNN 모델에 다음 전략을 통합하여 성능을 향상시킨 구조를 구현함:
-
 1. 데이터 증강 적용: 다양한 이미지 변형을 통해 학습 데이터 다양성 확보
 2. 전이학습 도입: MobileNetV2의 사전학습된 특징 추출기 사용
 3. Dropout 및 Dense 레이어 추가: 오버피팅 방지 및 모델 표현력 향상
 4. EarlyStopping, ModelCheckpoint 적용: 과적합 방지 및 최적 모델 저장
 5. 데이터 증강 강화: 회전, 이동, 확대/축소, 반전 등 복합적 증강 적용
+
+---
+
+### 🍬 HARIBO_Dataset Preparation
+
+1. 5가지 하리보 젤리 종류(bear, cola, egg, heart, ring)를 직접 촬영하여 이미지 데이터셋 생성
+2. 다양한 각도·조명·배경에서 수집된 이미지 총 500장 (각 클래스당 100장 내외)
+3. 구글 드라이브에 업로드 후, Google Colab 환경에서 실습용으로 연동
+
+![alt text](../../../assets/img/Linux/haribo_dataset.png)
 
 ---
 
@@ -141,6 +150,8 @@ model.save(model_save_path)
 print(f"모델이 저장되었습니다: {model_save_path}")
 ```
 
+---
+
 ### ✅ Result : 학습 결과 시각화 및 예측 확인
 
 ![alt text](../../../assets/img/Linux/epoch32.png)
@@ -148,44 +159,101 @@ print(f"모델이 저장되었습니다: {model_save_path}")
 ![alt text](<../../../assets/img/Linux/validation loss.png>)
 ![alt text](<../../../assets/img/Linux/image ex.png>)
 
+---
+
 ### 🔍 Summary
 - MobileNetV2를 기반으로 한 전이학습 모델이 적은 데이터셋에서도 좋은 성능을 보임
 - 실시간 예측 환경에도 최적화된 모델 구조로 전환 가능 (On-Device AI 적용 가능)
 
-# 터미널 작업 적어야됨
+---
 
+# 💻 Real-Time Inference Setup on Terminal
+---
+### 📁 1. 디렉토리 구성
 
+```bash
+mkdir haribo_cam_classifier
+cd haribo_cam_classifier
+```
 
+### 🐍 2. 가상환경 생성 및 패키지 설치
 
+```bash
+python3 -m venv venv
+source venv/bin/activate
 
+pip install tensorflow opencv-python-headless numpy
+```
 
+### 📥 3. Google Drive에서 .h5 파일 다운로드 후 haribo_cam_classifier 디렉토리에 복사
 
+![alt text](../../../assets/img/Linux/h5.png)
 
+### 4. 클래스 이름 파일 생성 (class_names.json)
 
+```json
+["bear", "cola", "egg", "heart", "ring"]
+```
 
+### 5. 실시간 분류 코드 생성 (predict_cam.py)
 
+```py
+import cv2
+import numpy as np
+import tensorflow as tf
+import json
 
+# 모델과 클래스 이름 로드
+model = tf.keras.models.load_model('haribo_model.h5')
 
+with open('class_names.json', 'r') as f:
+    class_names = json.load(f)
 
+def preprocess(frame):
+    img = cv2.resize(frame, (96, 96))
+    img = img.astype('float32') / 255.0
+    return np.expand_dims(img, axis=0)
 
+cap = cv2.VideoCapture(2)
+if not cap.isOpened():
+    print("카메라를 열 수 없습니다.")
+    exit()
 
+print("젤리 분류 시작! (Q 키를 누르면 종료)")
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
 
+    input_img = preprocess(frame)
+    pred = model.predict(input_img)
+    label = class_names[np.argmax(pred)]
 
+    # 예측 결과 화면에 출력
+    cv2.putText(frame, f'Prediction: {label}', (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+    cv2.imshow('Haribo Classifier', frame)
 
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
+cap.release()
+cv2.destroyAllWindows()
+```
 
+### 6. OpenCV 설치 (GUI 지원 포함)
 
+```bash
+pip install opencv-python
+```
 
+### 7. 실행?
 
+```bash
+python3 predict_cam.py
+```
 
-
-
-
-
-
-
-
-# 결과
+### 8. 결과
 
 ![alt text](../../../assets/img/Linux/haribo.jpg)
 ![alt text](../../../assets/img/Linux/heart.png)
