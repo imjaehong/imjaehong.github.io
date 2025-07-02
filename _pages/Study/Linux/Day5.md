@@ -106,6 +106,8 @@ array([ 38, 223, 157, 213, 104,  79, 231,  31, 117,  10,  48,  72, 128,
         41,   6, 178])
 ```   
 
+---
+
 ### 💡 Code : Mnist 실습
 
 ```py
@@ -192,6 +194,80 @@ Model: "sequential_6"
  Trainable params: 7,850 (30.66 KB)
 
  Non-trainable params: 0 (0.00 B)
+```
 
+```py
+# 5 모델 학습 진행
+
+# 5-1 모델 compile: 손실 함수, 최적화 함수, 측정 함수 설정
+md.compile(loss = 'sparse_categorical_crossentropy', optimizer = 'sgd', metrics = ['acc'])
+
+# 5-2 모델 학습: 학습 횟수, batch_size, 검증용 데이터 설정
+hist = md.fit(train_x2, train_y, epochs=30, batch_size=64, validation_split=0.2)
+```
+
+![alt text](../../../assets/img/Linux/27-1-1.png)
+
+```py
+acc = hist.history['acc']
+val_acc = hist.history['val_acc']
+epoch = np.arange(1, len(acc) + 1)
+```
+
+```py
+# 학습결과 분석 : 학습 곡선 그리기
+
+plt.figure(figsize=(10,8))
+plt.plot(epoch, acc, 'b', label='Training accuracy')
+plt.plot(epoch, val_acc, 'r', label='Validation accuracy')
+plt.title('Training and validation accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+```
+
+![alt text](../../../assets/img/Linux/27-1-2.png)
+
+```py
+# 6 테스트용 데이터 평가
+md.evaluate(test_x2, test_y)
+
+# 7 가중치 저장
+weight = md.get_weights()
+weight
+```
+
+![alt text](../../../assets/img/Linux/27-1-3.png)
 
 ```
+[array([[-0.01809908,  0.04423299, -0.00407743, ...,  0.06332525,
+         -0.00251734,  0.00196751],
+        [-0.050407  , -0.05998353, -0.07465094, ..., -0.01433843,
+          0.01071206,  0.03646336],
+        [ 0.06986522, -0.0116923 , -0.07076468, ...,  0.02445704,
+         -0.05563192,  0.0041509 ],
+        ...,
+        [ 0.03118712, -0.04921252,  0.00195412, ..., -0.00605295,
+         -0.00202944,  0.07754893],
+        [ 0.08052733, -0.0327304 ,  0.02389491, ...,  0.00695625,
+          0.06758214,  0.03055982],
+        [-0.05485652,  0.03522244,  0.03506895, ...,  0.00976416,
+         -0.06175685,  0.04081956]], dtype=float32),
+ array([-0.23029914,  0.30129498,  0.01726046, -0.17140533,  0.06494795,
+         0.772551  , -0.05629169,  0.3972938 , -0.94089097, -0.15446219],
+       dtype=float32)]
+```
+
+```py
+# Model Loss 시각화
+plt.plot(hist.history['loss'], label='loss')
+plt.plot(hist.history['val_loss'], label='val_loss')
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+```
+
+![alt text](../../../assets/img/Linux/27-1-4.png)
