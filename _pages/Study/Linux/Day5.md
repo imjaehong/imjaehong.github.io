@@ -271,3 +271,10 @@ plt.show()
 ```
 
 ![alt text](../../../assets/img/Linux/27-1-4.png)
+
+
+
+CIFAR10 실습
+2025-06-27_2
+보고서 참고
+
