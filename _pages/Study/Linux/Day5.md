@@ -1,5 +1,5 @@
 ---
-title: "Day5 : ??"
+title: "Day5 : 선형모델, 신경망모델"
 tags:
     - Study
     - Language
