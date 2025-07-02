@@ -149,7 +149,6 @@ plt.show()
 model.save(model_save_path)
 print(f"모델이 저장되었습니다: {model_save_path}")
 ```
-
 ---
 
 ### ✅ Result : 학습 결과 시각화 및 예측 확인
@@ -165,8 +164,6 @@ print(f"모델이 저장되었습니다: {model_save_path}")
 - MobileNetV2를 기반으로 한 전이학습 모델이 적은 데이터셋에서도 좋은 성능을 보임
 - 실시간 예측 환경에도 최적화된 모델 구조로 전환 가능 (On-Device AI 적용 가능)
 
----
-
 # 💻 Real-Time Inference Setup on Terminal
 ---
 ### 📁 1. 디렉토리 구성
@@ -175,6 +172,8 @@ print(f"모델이 저장되었습니다: {model_save_path}")
 mkdir haribo_cam_classifier
 cd haribo_cam_classifier
 ```
+
+---
 
 ### 🐍 2. 가상환경 생성 및 패키지 설치
 
@@ -185,17 +184,23 @@ source venv/bin/activate
 pip install tensorflow opencv-python-headless numpy
 ```
 
+---
+
 ### 📥 3. 학습한 모델(.h5)을 Google Drive에서 다운로드하여 복사
 
 haribo_model.h5 파일을 Google Drive에서 다운받아 `haribo_cam_classifier` 디렉토리에 위치시킴
 
 ![alt text](../../../assets/img/Linux/h5.png)
 
+---
+
 ### 🖼️ 4. 클래스 이름 파일 생성 (class_names.json)
 
 ```json
 ["bear", "cola", "egg", "heart", "ring"]
 ```
+
+---
 
 ### 💡 5. 실시간 분류 코드 작성 (predict_cam.py)
 
@@ -243,17 +248,23 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
+---
+
 ### 🧩 6. OpenCV 설치 (GUI 지원 포함)
 
 ```bash
 pip install opencv-python
 ```
 
+---
+
 ### ▶️ 7. 실시간 예측 실행
 
 ```bash
 python3 predict_cam.py
 ```
+
+---
 
 ### ✅ 8. 결과 정리
 

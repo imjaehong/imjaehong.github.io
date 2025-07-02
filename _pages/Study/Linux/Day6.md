@@ -217,5 +217,3 @@ m0 = ConvDraw(nimg31, filters, (12, 10), 0)
 ### ⚙️ 설정 정보
 - **운영체제**: Raspberry Pi OS (64-bit)
 - **저장소**: Mass Storage Device - 62.5 GB
-
-
