@@ -141,6 +141,11 @@ print(f"모델이 저장되었습니다: {model_save_path}")
 
 
 
+# 터미널 작업 적어야됨
+
+
+
+
 ![alt text](<../../../assets/img/Linux/validation accuracy.png>)
 ![alt text](<../../../assets/img/Linux/validation loss.png>)
 ![alt text](<../../../assets/img/Linux/image ex.png>)
