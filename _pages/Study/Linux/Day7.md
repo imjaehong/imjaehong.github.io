@@ -255,7 +255,7 @@ pip install opencv-python
 python3 predict_cam.py
 ```
 
-### 8. ✅ 결과 정리
+### ✅ 8. 결과 정리
 
 🍬 모델 예측을 위한 5개 클래스 하리보 샘플 전체 이미지
 ![alt text](../../../assets/img/Linux/haribo.jpg)
