@@ -7,8 +7,6 @@ date: "2025-03-18"
 thumbnail: "/assets/img/thumbnail/C.png"
 bookmark: true
 ---
-# 문제 설명
----
 
 # 🛩️ 전투기 슈팅 게임 실행 설명서
 
