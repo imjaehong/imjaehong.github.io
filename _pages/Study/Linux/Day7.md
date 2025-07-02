@@ -8,15 +8,19 @@ thumbnail: "/assets/img/thumbnail/Linux_logo.png"
 bookmark: true
 ---
 
-# 구글 코랩에서 코드 작성
+# Model Improvement Strategy
+---
+기존 CNN 모델에 다음 전략을 통합하여 성능을 향상시킨 구조를 구현함:
 
-기존 모델에서
-1. 데이터 증강 적용
-2. 전이학습 (Transfer Learning) 도입
-3. 모델 개선 (Dropout 추가 / 레이어 확장)
-4. EarlyStopping, ModelCheckpoint 적용
-5. 데이터 증강 강화
-적용
+1. 데이터 증강 적용: 다양한 이미지 변형을 통해 학습 데이터 다양성 확보
+2. 전이학습 도입: MobileNetV2의 사전학습된 특징 추출기 사용
+3. Dropout 및 Dense 레이어 추가: 오버피팅 방지 및 모델 표현력 향상
+4. EarlyStopping, ModelCheckpoint 적용: 과적합 방지 및 최적 모델 저장
+5. 데이터 증강 강화: 회전, 이동, 확대/축소, 반전 등 복합적 증강 적용
+
+---
+
+### 💡 Code : CNN with Transfer Learning & Augmentation
 
 ```py
 import matplotlib.pyplot as plt
@@ -137,20 +141,18 @@ model.save(model_save_path)
 print(f"모델이 저장되었습니다: {model_save_path}")
 ```
 
+### ✅ Result : 학습 결과 시각화 및 예측 확인
+
 ![alt text](../../../assets/img/Linux/epoch32.png)
-
-
-
-# 터미널 작업 적어야됨
-
-
-
-
 ![alt text](<../../../assets/img/Linux/validation accuracy.png>)
 ![alt text](<../../../assets/img/Linux/validation loss.png>)
 ![alt text](<../../../assets/img/Linux/image ex.png>)
 
+### 🔍 Summary
+- MobileNetV2를 기반으로 한 전이학습 모델이 적은 데이터셋에서도 좋은 성능을 보임
+- 실시간 예측 환경에도 최적화된 모델 구조로 전환 가능 (On-Device AI 적용 가능)
 
+# 터미널 작업 적어야됨
 
 
 
