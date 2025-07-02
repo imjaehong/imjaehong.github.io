@@ -191,7 +191,7 @@ haribo_model.h5 파일을 Google Drive에서 다운받아 `haribo_cam_classifier
 
 ![alt text](../../../assets/img/Linux/h5.png)
 
-### 🧠 4. 클래스 이름 파일 생성 (class_names.json)
+### 🖼️ 4. 클래스 이름 파일 생성 (class_names.json)
 
 ```json
 ["bear", "cola", "egg", "heart", "ring"]
@@ -243,7 +243,7 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 
-### 6. OpenCV 설치 (GUI 지원 포함)
+### 🧩 6. OpenCV 설치 (GUI 지원 포함)
 
 ```bash
 pip install opencv-python
@@ -257,6 +257,7 @@ python3 predict_cam.py
 
 ### 8. ✅ 결과 정리
 
+🍬 모델 예측을 위한 5개 클래스 하리보 샘플 전체 이미지
 ![alt text](../../../assets/img/Linux/haribo.jpg)
 
 🧪 예측 예시: heart
