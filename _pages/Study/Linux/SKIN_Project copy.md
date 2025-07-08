@@ -8,7 +8,8 @@ thumbnail: "/assets/img/thumbnail/Linux_logo.png"
 bookmark: true
 ---
 
-3일껄로 할까나
+
+최종 한거 노션에 
 
 # Google Colab
 ---
