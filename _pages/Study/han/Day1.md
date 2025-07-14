@@ -65,7 +65,7 @@ bookmark: true
 - **Async 리셋**: 리소스 절약 (저전력, 저면적, 저비용), 하지만 타이밍 민감도 ↑
 - **Sync 리셋**: 설계 안정성 ↑, 그러나 자원 소모 ↑
 
-# Combinational Logic vs Sequential Logic
+# 조합 논리 vs 순차 논리
 ---
 ### 🟢 Combinational Logic (조합 논리)
 - 출력이 **입력에만 의존**
