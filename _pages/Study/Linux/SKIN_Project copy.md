@@ -9,7 +9,8 @@ bookmark: true
 ---
 
 
-최종 한거 노션에 
+최종 한거 노션에
+체크
 
 # Google Colab
 ---
