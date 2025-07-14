@@ -174,4 +174,4 @@ reg signed [3:0] a = 4'b1000;  // -8
 - **FF에서 `else`**: 상태 보존 명확히 하려면 좋지만, **불필요한 전력 소모 주의**
 - **combinational에서 `else` 누락**: **latch 발생 가능성** 있음 → 반드시 처리 필요
 
-
+![alt text](<../../../assets/img/System Verilog/f_b.png>)
