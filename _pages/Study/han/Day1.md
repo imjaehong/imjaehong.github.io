@@ -74,7 +74,7 @@ bookmark: true
 - 입력이 바뀌면 즉시 출력도 바뀜
 - 예: 가산기, 인코더, 디코더, 멀티플렉서 등
 
-```systemverilog
+```verilog
 assign y = a & b;
 ```
 
@@ -85,7 +85,7 @@ assign y = a & b;
 - 시간 개념(순서, 타이밍)이 중요
 - 예: 레지스터, 카운터, FSM 등
 
-```systemverilog
+```verilog
 always @(posedge clk) begin
   q <= d;
 end
