@@ -147,6 +147,31 @@ reg signed [3:0] a = 4'b1000;  // -8
 - `wire`: 저장 ❌, 연결만  
 - `reg`: 저장 ⭕, 블록 내에서 값 유지
 
+# Clock Gating, else 사용, power 관련
+---
+### 🟢 local clock gating
+- 특정 block만 **선택적으로 클럭 공급**해서 **동작을 제한**
+- 사용 목적: **동작 안 하는 회로의 전력 차단** → **저전력 설계**
+- 직접 `if (~enable)`로 처리하는 것보다 더 효율적일 수 있음
 
+### 🔵 Flip-Flop (seq logic)에서 `else` 사용
+- **항상 `else`를 쓰는 게 원칙은 아님**
+- 하지만 `always @(posedge clk)`에서 `if`만 쓰고 `else`가 없으면:
+  - **이전 값 유지 안 될 수 있음**
+  - synthesis 툴이 latch로 오해할 수도 있음
+- **명확한 상태 유지 목적**으로 `else`를 명시하는 게 좋음
+
+> ✅ 하지만 **불필요한 연산(=토글)**이 발생할 수 있어  
+> → **power 측면에서 불리**할 수 있음
+
+### 🔷 Combinational Logic에서는?
+- `always @(*)`에서는 **`if`에 `else`를 반드시 써야 함**  
+  → 모든 조건에서 출력이 정의되지 않으면 **latch 발생 위험**
+- **latch를 피하려면 모든 경우를 처리하는 구조 (`else` 포함)** 가 중요함
+
+### ✅ 요약
+- **local clock gating**: 클럭을 차단해서 전력 줄이는 기법
+- **FF에서 `else`**: 상태 보존 명확히 하려면 좋지만, **불필요한 전력 소모 주의**
+- **combinational에서 `else` 누락**: **latch 발생 가능성** 있음 → 반드시 처리 필요
 
 
