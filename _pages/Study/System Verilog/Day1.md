@@ -175,3 +175,35 @@ reg signed [3:0] a = 4'b1000;  // -8
 - **combinational에서 `else` 누락**: **latch 발생 가능성** 있음 → 반드시 처리 필요
 
 ![alt text](<../../../assets/img/System Verilog/f_b.png>)
+
+
+# Quiz 1
+---
+### 이 코드는 합법적인가? 컴파일이 될까?
+
+```verilog
+program automatic test;
+  bit [31:0] count;
+  logic [31:0] Count = 'x;
+
+  initial begin
+    count = Count;
+    $display("Count = %0x count = %0d", Count, count);
+  end
+endprogram: test
+```
+
+> 답변 : 합법적인 SystemVerilog 코드이며 컴파일도 가능함. program automatic은 시뮬레이션 환경에서 사용되는 구조이고 문법적으로 문제 없음.
+
+### logic 타입은 어떤 타입의 다른 이름인가? 'x는 Count를 어떻게 초기화하는가?
+
+> 답변 : logic은 4-state 타입인 reg의 대체 표현 → 0, 1, x, z 저장 가능. 'x는 모든 비트를 unknown(x) 값으로 초기화함.
+
+### 프로그램은 무엇을 출력할까? 왜 count와 Count의 값이 다른가?
+
+> 출력 예시 : Count = xxxxxxxx count = 0 (형식적으로 표현)
+
+> 이유 : Count는 logic이므로 'x 값을 유지함. count는 bit 타입이라 2-state만 가능 → x 값을 0으로 강제 변환해서 저장됨
+
+
+
