@@ -29,7 +29,7 @@ bookmark: true
 
 > ✅ 예: 클럭 엣지마다 레지스터 값을 갱신하거나, 입력 변화에 반응
 
-### ✅ 핵심 요약
+### ✅ 요약
 - `initial`은 **한 번만** 실행 → 주로 **시뮬레이션 제어**
 - `always`는 **계속 반복** 실행 → 주로 **회로 동작 구현**
 
@@ -74,7 +74,6 @@ bookmark: true
 - 입력이 바뀌면 즉시 출력도 바뀜
 - 예: 가산기, 인코더, 디코더, 멀티플렉서 등
 
-> 예:
 ```systemverilog
 assign y = a & b;
 ```
@@ -86,7 +85,6 @@ assign y = a & b;
 - 시간 개념(순서, 타이밍)이 중요
 - 예: 레지스터, 카운터, FSM 등
 
-> 예:
 ```systemverilog
 always @(posedge clk) begin
   q <= d;
