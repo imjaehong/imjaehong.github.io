@@ -45,4 +45,45 @@ end
 ```
 
 
+합성하는 이유? rtl 코드에서 잘 돌고 문제가 없더라도 합성 시 에러가 생길 수 있음. 합성이 되는 코드가 되도록 수정해줘야 함.
+
+합성하기 전에 rtl sim을 다시 돌려봐야함
+
+run.log 파일에서 /Err, /Criticure warring 이 안떠야함
+
+마지막 gate sim에서 netlist를 갖고 와서 돌렸을 때 rtl 과 같아야함.
+
+가끔 다른 경우는 xpro? 
+
+
+게이트 레벨에서 x값이 나오면 가장 앞에 뜬 애(0부터)를 쫒아가야됨.
+
+counter1_xpro 수정하고 다시
+rtl sim
+syn
+setuo check (30~40% margin 주고)
+gate sim
+
+
+# Project 1
+---
+
+
+
+![alt text](<../../../assets/img/System Verilog/project1_2.png>)
+
+FIR(Finite Impulse Response) Filter Design
+
+![alt text](<../../../assets/img/System Verilog/image.png>)
+
+shift register
+
+![alt text](<../../../assets/img/System Verilog/image copy.png>)
+![alt text](<../../../assets/img/System Verilog/pj1_6.png>)
+![alt text](<../../../assets/img/System Verilog/pj1_7.png>)
+![alt text](<../../../assets/img/System Verilog/pj1_8.png>)
+
+floating <-> fix 
+
+
 
