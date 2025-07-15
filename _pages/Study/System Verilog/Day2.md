@@ -14,5 +14,5 @@ simulation 결과는 나와도 Synthesis 되지 않는 경우, 대부분 코드 
 
 Synthesis 에서 가장 중요한 것은 Timing 체크 -> Setup, Hold
 
-
+플리플롭에서 넘어갈때 clock sqew 생길 수도 있음
 
