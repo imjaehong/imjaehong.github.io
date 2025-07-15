@@ -42,6 +42,7 @@ always @(posedge clk_b) begin
     sync1 <= async_signal;
     sync2 <= sync1;  // 여기서 metastability 완화
 end
+```
 
 
 
