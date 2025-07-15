@@ -206,4 +206,4 @@ endprogram: test
 > 이유 : Count는 logic이므로 'x 값을 유지함. count는 bit 타입이라 2-state만 가능 → x 값을 0으로 강제 변환해서 저장됨
 
 
-
+shift_reg
