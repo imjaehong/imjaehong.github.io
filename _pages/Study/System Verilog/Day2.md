@@ -68,17 +68,14 @@ gate sim
 # Project 1
 ---
 
-
-
-![alt text](<../../../assets/img/System Verilog/project1_2.png>)
+![alt text](<../../../assets/img/System Verilog/pj1_2.png>)
 
 FIR(Finite Impulse Response) Filter Design
 
-![alt text](<../../../assets/img/System Verilog/image.png>)
-
+![alt text](<../../../assets/img/System Verilog/pj1_4.png>)
 shift register
 
-![alt text](<../../../assets/img/System Verilog/image copy.png>)
+![alt text](<../../../assets/img/System Verilog/pj1_5.png>)
 ![alt text](<../../../assets/img/System Verilog/pj1_6.png>)
 ![alt text](<../../../assets/img/System Verilog/pj1_7.png>)
 ![alt text](<../../../assets/img/System Verilog/pj1_8.png>)
