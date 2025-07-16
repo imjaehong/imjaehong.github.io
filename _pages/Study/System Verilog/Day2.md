@@ -63,24 +63,3 @@ rtl sim
 syn
 setuo check (30~40% margin 주고)
 gate sim
-
-
-# Project 1
----
-
-![alt text](<../../../assets/img/System Verilog/pj1_2.png>)
-
-FIR(Finite Impulse Response) Filter Design
-
-![alt text](<../../../assets/img/System Verilog/pj1_4.png>)
-shift register
-
-![alt text](<../../../assets/img/System Verilog/pj1_5.png>)
-![alt text](<../../../assets/img/System Verilog/pj1_6.png>)
-![alt text](<../../../assets/img/System Verilog/pj1_7.png>)
-![alt text](<../../../assets/img/System Verilog/pj1_8.png>)
-
-floating <-> fix 
-
-
-
