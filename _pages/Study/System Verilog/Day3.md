@@ -17,7 +17,9 @@ bookmark: true
 ![alt text](<../../../assets/img/System Verilog/pj04.png>)
 
 $z^-1$ : 지연
+
 $y[n] = b_0 x[n] + b_1 x[n-1] + \cdots + b_N x[n - N]$
+
 $y[n] = \sum_{i=0}^{N} b_i \cdot x[n - i]$
 
 
