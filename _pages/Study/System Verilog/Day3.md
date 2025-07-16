@@ -15,6 +15,12 @@ bookmark: true
 ![alt text](<../../../assets/img/System Verilog/pj02.png>)
 ![alt text](<../../../assets/img/System Verilog/pj03.png>)
 ![alt text](<../../../assets/img/System Verilog/pj04.png>)
+
+$z^-1$ : 지연
+$y[n] = b_0 x[n] + b_1 x[n-1] + \cdots + b_N x[n - N]$
+$y[n] = \sum_{i=0}^{N} b_i \cdot x[n - i]$
+
+
 ![alt text](<../../../assets/img/System Verilog/pj05.png>)
 ![alt text](<../../../assets/img/System Verilog/pj06.png>)
 ![alt text](<../../../assets/img/System Verilog/pj07.png>)
@@ -321,14 +327,20 @@ grid on;
 ### 📤 출력 변환 단계
 
 - 누적 결과: `<8.14>`  
-→ 출력용 `<1.6>`로 변환하기 위해 다음 작업 수행:
+→ 출력 포맷 `<1.6>`으로 변환하기 위해 다음 작업 수행:
 
-1. **소수부 절단**:  
-   `<8.14>` → 하위 8비트 제거 → `<2.6>`  
-2. **포화 처리 (Saturation)**:  
-   - 결과 ≥ 63 → `63`  
-   - 결과 ≤ -64 → `-64`
-3. **Flip-Flop 저장 (출력 안정화)**
+1. **소수부 절단 (Truncation)**  
+   - 하위 8비트(소수부)를 제거  
+   - `<8.14>` → `<8.6>`  
+   - 소수부 14비트 → 6비트로 축소
+
+2. **정수부 포화 처리 (Saturation)**  
+   - 출력 정수부는 1비트만 사용 가능하므로  
+     - 값 ≥ 63 → `63`  
+     - 값 ≤ -64 → `-64`
+
+3. **최종 출력 포맷**  
+   - 결과는 `<1.6>` 형식으로 Flip-Flop에 저장되어 출력 안정화
 
 ---
 
