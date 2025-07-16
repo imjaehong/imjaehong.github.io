@@ -236,7 +236,7 @@ vcs -sverilog -full64 -debug_all \
 
 ---
 
-### [aedu34@kccisynop2 /home/aedu34/asic_adu_red/verilog]
+### [aedu34@kccisynop2 /home/aedu34/asic_adu_red/verilog/project1]
 - rrc_filter.sv
 - tb_rrc_filter.sv
 - run_rcc
