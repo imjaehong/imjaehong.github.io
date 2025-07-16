@@ -143,7 +143,7 @@ endmodule
 
 ### code : tb_rrc_filter.sv
 
-```verilog
+```systemverilog
 `timescale 1ns/10ps
 
 module tb_rrc_filter();
@@ -216,7 +216,7 @@ endmodule
 
 ### code : run_rcc
 
-```verilog
+```bash
 vcs -sverilog -full64 -debug_all \
     tb_rrc_filter.sv rrc_filter.sv \
     -o simv && ./simv
