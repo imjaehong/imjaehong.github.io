@@ -141,6 +141,8 @@ end
 endmodule
 ```
 
+---
+
 ### code : tb_rrc_filter.sv
 
 ```verilog
@@ -214,6 +216,8 @@ rrc_filter #(.WIDTH(7)) i_rrc_filter (
 endmodule
 ```
 
+---
+
 ### code : run_rcc
 
 ```bash
@@ -222,14 +226,20 @@ vcs -sverilog -full64 -debug_all \
     -o simv && ./simv
 ```
 
+---
+
 ### [aedu34@kccisynop2 /home/aedu34/asic_adu_red/verilog]
 - rrc_filter.sv
 - tb_rrc_filter.sv
 - run_rcc
 - ofdm_i_adc_serial_out_fixed_30dB.txt
 
+---
+
 ### source run_rcc
 rrc_do.txt 생성됨
+
+---
 
 ### code : run_rrc_verdi
 
@@ -238,14 +248,19 @@ vcs -full64 -sverilog -kdb -debug_access+all+reverse rrc_filter.sv tb_rrc_filter
 ./simv -verdi &
 ```
 
+---
+
 ### source run_rrc_verdi
 
 ![alt text](<../../../assets/img/System Verilog/pj14.png>)
 
 # MATLAB
 ---
+
 ### C:\Users\kccistc\Documents\MATLAB
 - rrc_do.txt
+
+---
 
 ### Code : matlab graph
 
@@ -258,6 +273,8 @@ title('RRC Filter Output');
 grid on;
 ```
 
+---
+
 ### Result : matlab graph
 
 ![alt text](<../../../assets/img/System Verilog/pj15.png>)
@@ -269,12 +286,16 @@ grid on;
 - `data` 포맷: `<1.6>` → 총 7비트 (부호 1비트 + 소수 6비트)
 - `coeff` 포맷: `<1.8>` → 총 9비트 (부호 1비트 + 소수 8비트)
 
+---
+
 ### ⬇ 곱셈 결과
 - <1.6> × <1.8> = <2.14>
 - 7bit × 9bit = 16bit
 - 정수부: 1비트 + 1비트 = 2비트
 - 소수부: 6비트 + 8비트 = 14비트
 - 전체: `<2.14>` = 16비트
+
+---
 
 ### 📌 누적(Addition) 시 비트 확장
 
@@ -287,6 +308,7 @@ grid on;
 
 > ※ 정수부는 누적하면서 확장되고, 소수부는 그대로 14비트 유지됨
 
+---
 
 ### 📌 출력 변환
 - <8.14> → <1.6>
