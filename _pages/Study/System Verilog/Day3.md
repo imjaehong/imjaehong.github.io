@@ -279,6 +279,39 @@ grid on;
 
 ![alt text](<../../../assets/img/System Verilog/pj15.png>)
 
+---
+
+### Code : matlab_dump_analysis_stu.m
+
+```matlab
+% Created on 2025/07/02 by jihan
+
+clc;
+
+% fixed_mode = 0; % '0' = floating
+fixed_mode = 1;   % '1' = fixed
+
+[FileName, PathName] = uigetfile('*.txt', 'select the capture binary file');
+[FID, message] = fopen(FileName, 'r');
+
+if (fixed_mode)
+    waveform = fscanf(FID, '%d', [1 Inf]);
+else
+    waveform = fscanf(FID, '%f', [1 Inf]);
+end
+
+Iwave = waveform(1, :);
+
+figure;
+pwelch(double(Iwave));
+```
+
+---
+
+### Result : matlab graph
+
+![alt text](<../../../assets/img/System Verilog/pj16.png>)
+
 # 고정소수점 FIR 필터의 비트폭 계산 정리
 ---
 
@@ -347,4 +380,20 @@ grid on;
 | 누적 덧셈 N번 | `a + ceil(log2(N))` | `b` 유지 |
 | 출력 변환 | 정수부 잘라서 포화 | 소수부 `b → 6` |
 
+<오늘>
+1000 -> 1250
+1.25G 를 주고 timing check
 
+<최종>
+(main.c) logic으로 system verilog
+floating point file
+fix point 생성
+성능 만족 시키면 rtl을 짜고 합성하고 gate sim까지
+
+20이 들어가고 17클럭 뒤에 나옴
+17번째 클럭을 tcl, sdc, los
+
+
+
+
+매트랩은 
