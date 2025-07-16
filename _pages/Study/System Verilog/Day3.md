@@ -231,13 +231,23 @@ vcs -sverilog -full64 -debug_all \
 ### source run_rcc
 rrc_do.txt 생성됨
 
+### code : run_rrc_verdi
+
+```matlab
+vcs -full64 -sverilog -kdb -debug_access+all+reverse rrc_filter.sv tb_rrc_filter.sv
+./simv -verdi &
+```
+
+### source run_rrc_verdi
+
+![alt text](<../../../assets/img/System Verilog/pj14.png>)
+
 # MATLAB
 ---
-
 ### C:\Users\kccistc\Documents\MATLAB
 - rrc_do.txt
 
-### code : matlab graph
+### Code : matlab graph
 
 ```matlab
 y = load('rrc_do.txt');     % 데이터 불러오기
@@ -248,7 +258,9 @@ title('RRC Filter Output');
 grid on;
 ```
 
+### Result : matlab graph
 
+![alt text](<../../../assets/img/System Verilog/pj15.png>)
 
 # 고정소수점 FIR 필터의 비트폭 계산 정리
 ---
@@ -267,7 +279,7 @@ grid on;
 ### 📌 누적(Addition) 시 비트 확장
 
 | Tap 수 | 누적 결과 비트폭 |
-| :--: | :--: |
+| :---: | :---: |
 | 2 tap  | `<3.14>` |
 | 16 tap | `<6.14>` |
 | 32 tap | `<7.14>` |
