@@ -14,6 +14,7 @@ module button_detector (
     logic [                7:0] shift_reg;
     logic [$clog2(100_000)-1:0] div_counter;
 
+    // create 1kHz pulse (for button sampling)
     always_ff @(posedge clk, posedge reset) begin
         if (reset) begin
             div_counter <= 0;
@@ -37,11 +38,12 @@ module button_detector (
     );
 
     assign debounce = &shift_reg;
-    //assign o_btn = debounce;
+    // assign o_btn = debounce;
 
     logic [1:0] edge_reg;
 
-    always @(posedge clk, posedge reset) begin
+    // edge detector (rising/falling/both)
+    always_ff @(posedge clk, posedge reset) begin
         if (reset) begin
             edge_reg <= 0;
         end else begin
